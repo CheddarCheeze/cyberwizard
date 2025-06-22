@@ -75,7 +75,67 @@ hr { margin: 40px 0px; border-color: #727878; opacity: 0.2; filter:alpha(opacity
 }
 .jumbotron .scroll-down:hover .glyphicon { padding-top: 25px; }
 
-.navbar  { border: 0px; background-color: #222222; position: absolute; top: 100%; right: 5%; width: 110px; z-index: 999; }
+/* .navbar  { border: 0px; background-color: #222222; position: absolute; top: 100%; right: 5%; width: 110px; z-index: 999; } */
+.navbar {
+  background-color: #222222;
+  z-index: 999;
+}
+@media (min-width: 768px) {
+  .navbar {
+    position: fixed;
+    top: 50%;
+    right: 0;
+    transform: none;
+    width: 110px;
+    height: auto;
+    background-color: #222222;
+    z-index: 999;
+    border-radius: 10px 0 0 10px;
+    padding: 10px 0;
+	
+    left: auto !important;
+  }
+
+  .navbar .navbar-nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+
+  .navbar .nav-item {
+    width: 100%;
+  }
+
+  .navbar .nav-link {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    font-weight: bold;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .navbar .nav-link:hover {
+    background-color: #1c8784;
+    color: white;
+  }
+
+  .navbar-toggler {
+    display: none;
+  }
+}
+.sidebar-hidden {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease-in-out;
+}
+.sidebar-visible {
+  opacity: 1;
+  pointer-events: auto;
+  transition: opacity 0.5s ease-in-out;
+}
+
 .navbar .navbar-collapse { padding: 0px; max-height: none; }
 .navbar .navbar-nav { float: none; }
 .navbar-nav { margin: 0px; }

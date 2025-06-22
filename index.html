@@ -104,7 +104,7 @@
 			</a>
 		</div>
 		
-		<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top" id="navbar-example" role="navigation">
+		<nav class="navbar sidebar-hidden navbar-expand-md navbar-dark bg-dark fixed-top" id="navbar-example" role="navigation">
 			<div class="container-fluid">
 				 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
 			      	 aria-controls="navbarNavDropdown" 
@@ -2062,6 +2062,22 @@
 			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
 			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
 		  })();
+
+
+		</script>
+		<script>
+		window.addEventListener("scroll", function () {
+			const sidebar = document.querySelector(".navbar");
+			const triggerPoint = document.querySelector(".jumbotron").offsetHeight - 60;
+
+			if (window.scrollY > triggerPoint) {
+			sidebar.classList.add("sidebar-visible");
+			sidebar.classList.remove("sidebar-hidden");
+			} else {
+			sidebar.classList.remove("sidebar-visible");
+			sidebar.classList.add("sidebar-hidden");
+			}
+		});
 		</script>
 	</body>
 </html>
