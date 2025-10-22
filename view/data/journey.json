@@ -1,0 +1,320 @@
+{
+  "locations": {
+    "tulsa": {
+      "name": "Tulsa, OK",
+      "lat": 36.1539,
+      "lng": -95.9928,
+      "type": "birthplace"
+    },
+    "fayetteville": {
+      "name": "Fayetteville, AR",
+      "lat": 36.0626,
+      "lng": -94.1574,
+      "type": "education"
+    },
+    "collierville": {
+      "name": "Collierville, TN",
+      "lat": 35.0420,
+      "lng": -89.6645,
+      "type": "work"
+    },
+    "overlandpark": {
+      "name": "Overland Park, KS",
+      "lat": 38.9822,
+      "lng": -94.6708,
+      "type": "current"
+    }
+  },
+  "journey": [
+    {
+      "id": "start",
+      "type": "milestone",
+      "location": "tulsa",
+      "title": "Born in Tulsa, Oklahoma",
+      "date": "1993",
+      "description": "Where the journey began",
+      "icon": "🏠"
+    },
+    {
+      "id": "drive-to-college",
+      "type": "transit",
+      "from": "tulsa",
+      "to": "fayetteville",
+      "title": "Off to College",
+      "date": "2011-08",
+      "description": "115 mile journey to the University of Arkansas",
+      "icon": "🚗",
+      "distance": 115
+    },
+    {
+      "id": "uark-bs",
+      "type": "education",
+      "location": "fayetteville",
+      "company": "University of Arkansas",
+      "title": "Bachelor of Science in Computer Science",
+      "period": "Aug 2011 - May 2015",
+      "date": "2011-08",
+      "gpa": "3.17",
+      "description": "The curriculum was taught heavily based on C, C++, and Java-based programming. Other languages I learned throughout my coursework include PHP, JavaScript, SQL, HTML, and topics in computer networking.",
+      "icon": "🎓"
+    },
+    {
+      "id": "housing",
+      "type": "leadership",
+      "location": "fayetteville",
+      "company": "U of A Housing",
+      "title": "Director of Advertising and Public Relations",
+      "period": "April 2012 - May 2014",
+      "date": "2012-04",
+      "description": "Advise and advertise for many programs and organizations through Residents' Interhall Congress and communication to students with media.",
+      "link": "http://ric.uark.edu/",
+      "icon": "📢"
+    },
+    {
+      "id": "mathclub",
+      "type": "leadership",
+      "location": "fayetteville",
+      "company": "Math Club",
+      "title": "Public Relations Officer",
+      "period": "Aug 2012 - May 2013",
+      "date": "2012-08",
+      "description": "Relate about the elation of mathematics to students over social media, posters, and personal communication to University students covering special topics, social events, and the annual celebration of mind.",
+      "link": "http://www.uark.edu/rso/pme/Home.html",
+      "icon": "🧮"
+    },
+    {
+      "id": "diversity",
+      "type": "leadership",
+      "location": "fayetteville",
+      "company": "Diversity Impact",
+      "title": "Mentor Host",
+      "period": "2012 - 2014",
+      "date": "2012-01",
+      "description": "This is an annual program that hosts high school students to visit the University for three days and two nights. Every student I hosted has come to the University of Arkansas.",
+      "link": "http://rsvp.uark.edu/935.php",
+      "icon": "🤝"
+    },
+    {
+      "id": "sca",
+      "type": "leadership",
+      "location": "fayetteville",
+      "company": "U of A Student Affairs",
+      "title": "Summer Conference Assistant",
+      "period": "May 2013 - Aug 2013",
+      "date": "2013-05",
+      "description": "Develop communication skills through desk operations and creating a safe environment for camps, conferences, and other mass gatherings.",
+      "link": "http://housing.uark.edu/Conferences/",
+      "icon": "🏢"
+    },
+    {
+      "id": "fnl",
+      "type": "leadership",
+      "location": "fayetteville",
+      "company": "U of A Student Affairs",
+      "title": "Friday Night Live Student Coordinator",
+      "period": "May 2013 - Dec 2013",
+      "date": "2013-05",
+      "description": "Expand and implement the late night programming series to involve and engage the community in a safe and positive environment.",
+      "link": "http://fnl.uark.edu/",
+      "icon": "🎉"
+    },
+    {
+      "id": "bookclub",
+      "type": "leadership",
+      "location": "fayetteville",
+      "company": "Book Club",
+      "title": "President / Founder",
+      "period": "2013",
+      "date": "2013-01",
+      "description": "Started the first book club registered student organization at the University of Arkansas. We held biweekly meetings talking about books!",
+      "link": "https://www.facebook.com/UABookClub",
+      "icon": "📚"
+    },
+    {
+      "id": "nrhh",
+      "type": "leadership",
+      "location": "fayetteville",
+      "company": "National Residence Hall Honorary",
+      "title": "Active Member",
+      "period": "Aug 2013 - May 2014",
+      "date": "2013-08",
+      "description": "As an active member of the University of Arkansas chapter, we are role models of service, bestowers of recognition, excellence of scholastics, and exercisers of leadership. Top 1% of student leaders living in residence halls.",
+      "link": "https://sites.google.com/site/taenrhh/",
+      "icon": "⭐"
+    },
+    {
+      "id": "drive-to-fedex",
+      "type": "transit",
+      "from": "fayetteville",
+      "to": "collierville",
+      "title": "Summer Internship Road Trip",
+      "date": "2014-06",
+      "description": "428 mile journey to Memphis area for FedEx internship",
+      "icon": "🚗",
+      "distance": 428
+    },
+    {
+      "id": "fedex",
+      "type": "work",
+      "location": "collierville",
+      "company": "FedEx World Tech Center",
+      "title": "Programmer Analyst Intern",
+      "period": "June 2014 - Aug 2014",
+      "date": "2014-06",
+      "description": "Worked with a team of interns to present and demonstrate a project to senior executives and directors, earning the Director's Choice, Customer Focus Award, and People's Choice Award. Participated in an agile project utilizing scrum that incorporated cross platform mobile software to send push notifications from Azure cloud for iOS, Android, and WinPhone.",
+      "link": "http://www.fedex.com/us/",
+      "icon": "📦"
+    },
+    {
+      "id": "drive-back-from-fedex",
+      "type": "transit",
+      "from": "collierville",
+      "to": "fayetteville",
+      "title": "Return to Fayetteville",
+      "date": "2014-08",
+      "description": "Back to Arkansas for senior year and beyond",
+      "icon": "🚗",
+      "distance": 344
+    },
+    {
+      "id": "grader",
+      "type": "work",
+      "location": "fayetteville",
+      "company": "U of A CSCE Department",
+      "title": "Operating Systems / Computer Networks Grader",
+      "period": "Aug 2014 - May 2015",
+      "date": "2014-08",
+      "description": "Graded and facilitated discussions with fifty to seventy students. Provided feedback and progress documentation on all course work.",
+      "link": "http://csce.uark.edu/",
+      "icon": "💻"
+    },
+    {
+      "id": "tutor",
+      "type": "work",
+      "location": "fayetteville",
+      "company": "U of A Bogle Academic Center",
+      "title": "Academic Tutor",
+      "period": "Aug 2014 - Jan 2016",
+      "date": "2014-08",
+      "description": "Tutor subjects within mathematics, computer science, computer engineering, and information system courses.",
+      "link": "http://www.arkansasrazorbacks.com/page/academics-tutoring",
+      "icon": "📝"
+    },
+    {
+      "id": "acm",
+      "type": "leadership",
+      "location": "fayetteville",
+      "company": "Association for Computing Machinery",
+      "title": "Secretary - U of A Chapter",
+      "period": "May 2014 - May 2015",
+      "date": "2014-05",
+      "description": "Manage website, social media, and listserv of CSCE students delivering information about the latest technology, employer opportunities, and social events.",
+      "link": "http://cavern.uark.edu/~acm/",
+      "icon": "💼"
+    },
+    {
+      "id": "handlebar",
+      "type": "work",
+      "location": "fayetteville",
+      "company": "The Handle Bar",
+      "title": "IT and Salesman",
+      "period": "June 2015 - Sept 2015",
+      "date": "2015-06",
+      "description": "Managed the website, webstore, and electronic equipment at a local bicycle shop. This temporary summer job gave me an opportunity to learn about bicycles and contribute my technical skills to the local community.",
+      "link": "http://thehandlebar.org/",
+      "icon": "🚴"
+    },
+    {
+      "id": "uark-ms",
+      "type": "education",
+      "location": "fayetteville",
+      "company": "University of Arkansas",
+      "title": "Master of Science in Computer Science",
+      "period": "Aug 2015 - May 2017",
+      "date": "2015-08",
+      "gpa": "4.00",
+      "description": "General coursework focused on security with a research focus on IPv6 security. Courses were designed around recent research papers and held to high academic standards.",
+      "icon": "🎓"
+    },
+    {
+      "id": "grad-assistant",
+      "type": "work",
+      "location": "fayetteville",
+      "company": "U of A CSCE Department",
+      "title": "Graduate Assistantship",
+      "period": "Aug 2015 - Dec 2015",
+      "date": "2015-08",
+      "description": "Contributed to the CSCE department by engaging with the database management course through evaluating student coursework and maintaining weekly office hours.",
+      "link": "http://csce.uark.edu/",
+      "icon": "🏫"
+    },
+    {
+      "id": "tact",
+      "type": "work",
+      "location": "fayetteville",
+      "company": "U of A CSCE Department",
+      "title": "Research Assistant",
+      "period": "Jan 2016 - Aug 2017",
+      "date": "2016-01",
+      "description": "NSF grant entitled Training Arkansas Computing Teachers (TACT) is an effort to train approximately 50 high school teachers to teach computer science in Arkansas high schools.",
+      "link": "http://tact.uark.edu/",
+      "icon": "🔬"
+    },
+    {
+      "id": "drive-to-kansas",
+      "type": "transit",
+      "from": "fayetteville",
+      "to": "overlandpark",
+      "title": "Career Move to Kansas",
+      "date": "2017-08",
+      "description": "237 mile journey north to start professional career",
+      "icon": "🚗",
+      "distance": 237
+    },
+    {
+      "id": "netsmart",
+      "type": "work",
+      "location": "overlandpark",
+      "company": "Netsmart Technologies",
+      "title": "Software Engineer",
+      "period": "Aug 2017 - Feb 2019",
+      "date": "2017-08",
+      "description": "Developed an application to implement meaningful use measures for reporting medical health quality across multiple organizations, involving big data wrangling, data processing, and PHI security; managed a Cloudera cluster.",
+      "link": "https://www.ntst.com/",
+      "icon": "⚙️"
+    },
+    {
+      "id": "trilogy",
+      "type": "work",
+      "location": "overlandpark",
+      "company": "Trilogy Education",
+      "title": "Data Analytics Teacher / TA",
+      "period": "May 2018 - Dec 2018",
+      "date": "2018-05",
+      "description": "Followed detailed lesson plans, supported students individually, and instructed topics involving web scraping and data analytics.",
+      "link": "https://www.edx.org/",
+      "icon": "📊"
+    },
+    {
+      "id": "eversana",
+      "type": "work",
+      "location": "overlandpark",
+      "company": "Eversana Intouch",
+      "title": "Innovation Developer",
+      "period": "Feb 2019 - Current",
+      "date": "2019-02",
+      "description": "Work on an innovation team focused on developing prototypes and AI-driven solutions for life sciences and healthcare, involving data ingestion, transformation, and deployment within a proprietary AI platform; set up and manage AI development infrastructure, collaborate on building and deploying models, and create APIs to integrate results into business operations.",
+      "link": "https://www.eversanaintouch.com/",
+      "icon": "🚀"
+    },
+    {
+      "id": "present",
+      "type": "milestone",
+      "location": "overlandpark",
+      "title": "Present Day",
+      "date": "2025",
+      "description": "You are here!",
+      "icon": "📍"
+    }
+  ]
+}

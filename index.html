@@ -7,8 +7,8 @@
 		<meta http-equiv="content-language" content="nl" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-		<meta name="author" content="Adrian Ordorica" />	
-		<meta name="description" content="I'm a senior undergraduate student who enjoys computer networks and cryptography." />
+		<meta name="author" content="Adrian Cheddar Ordorica" />	
+		<meta name="description" content="I'm a senior innovative developer who enjoys computer networks and cryptography." />
 		<meta name="keywords" content="Adrian Cheddar Ordorica, Interactive Resume, programmer, computer science, security, Interactive CV, Resume, CV" />
 		<meta name="robots" content="index, follow" />
 		<meta name="revisit-after" content="14 days" />
@@ -20,12 +20,27 @@
 		<!-- Bootstrap theme -->
 		<link href="view/css/bootstrap.min.css" rel="stylesheet" />
 		<!-- Custom styles for this template -->
-		<link href="view/style.css" rel="stylesheet" /> 
-		
+		<link href="view/style.css" rel="stylesheet" />
+		<!-- Modular console and effects CSS -->
+		<link href="view/css/console.css" rel="stylesheet" />
+		<link href="view/css/effects.css" rel="stylesheet" />
+		<link href="view/css/dark-mode.css" rel="stylesheet" />
+		<link href="view/css/print.css" rel="stylesheet" media="print" />
+
 		<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 		<link rel="icon" href="favicon.ico" type="image/x-icon" />
 		
 		<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
+		<!-- Scroll-driven journey map CSS -->
+		<link href="view/css/journey-map.css" rel="stylesheet" />
+
+		<!-- Interest Galaxy CSS -->
+		<link href="view/css/interest-galaxy.css" rel="stylesheet" />
+
+		<!-- Profile Interactive Features CSS -->
+		<link href="view/css/profile.css" rel="stylesheet" />
+
 		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!--[if lt IE 9]>
         <script src="../../assets/js/html5shiv.js"></script>
@@ -97,12 +112,12 @@
 
 	<body data-spy="scroll" data-target="#navbar-example">	 
 		
-		<div class="csce"><a href="http://sdc.csce.uark.edu" target="_blank">Updated as of June 22, 2025</a></div>
+		<div class="csce"><a href="http://sdc.csce.uark.edu" target="_blank">Updated as of October 22, 2025</a></div>
 		
 			
 		<div id="top" class="jumbotron" data-src="view/images/boxes_animation.gif" data-position="center center">
 			<div class="container">
-				<h1>Adrian Cheddar Ordorica</h1>
+				<h1 data-text="Adrian Cheddar Ordorica" class="float">Adrian Cheddar Ordorica</h1>
 				<p class="lead">Interactive resume</p>
 			</div>
 			
@@ -153,15 +168,15 @@
 
 					<div class="col-md-4">
 						<h3>Details</h3>
-						<p>
-						<strong>Name:</strong><br />
-						Adrian Cheddar Ordorica<br />
-						<strong>Age:</strong><br />
-						31 years<br />
-						<strong>Location:</strong><br />
-						Overland Park, KS, USA, Earth		
-						</p>
-						
+						<dl class="profile-details">
+							<dt>Name:</dt>
+							<dd>Adrian Cheddar Ordorica</dd>
+							<dt>Age:</dt>
+							<dd>32 years</dd>
+							<dt>Location:</dt>
+							<dd>Overland Park, KS, USA, Earth</dd>
+						</dl>
+
 						<!--	X button
 						<a href="https://twitter.com/ChetsRebellion" class="twitter-follow-button" data-show-count="false" data-size="large" data-show-screen-name="false">Follow @ChetsRebellion</a>
 
@@ -176,10 +191,24 @@
 		<div id="experiences" class="container">
 			<h2>Experiences</h2>
 			<p class="lead">
-				&ldquo;That’s life, you know, we never end up where you thought you wanted to be.&rdquo;<br /> --Marshall Eriksen
+				&ldquo;That's life, you know, we never end up where you thought you wanted to be.&rdquo;<br /> --Marshall Eriksen
 			</p>
 
-			<hr />
+			<!-- View Toggle Buttons -->
+			<div class="experience-view-toggle">
+				<button class="view-toggle-btn active" data-view="timeline">
+					<i class="bi bi-list-ul"></i>
+					Timeline View
+				</button>
+				<button class="view-toggle-btn" data-view="journey">
+					<i class="bi bi-map"></i>
+					Journey Map
+				</button>
+			</div>
+
+			<!-- Timeline View (original content) -->
+			<div id="timeline-view" class="view-container active">
+				<hr />
 
 			<h3>Education</h3>
 
@@ -767,11 +796,13 @@
 				</div>
 
 
-	
+
 			</div>
+			</div>
+			<!-- End of Timeline View -->
 
 		</div>
-		
+
 		<div class="background-white">
 			<div id="abilities" class="container">
 				<h2>Abilities</h2>
@@ -782,1122 +813,22 @@
 				<hr />
 
 				<h3>Skills</h3>
-				<div class="row">
+				<div class="row" id="skills-container">
+					<!-- Skills loaded from view/data/skills.json -->
+				</div>
+				<hr />
 
-		
-	<div class="col-md-6">
-		<ul class="no-bullets">
-		
-				
-			<li>
-				<span class="ability-title">C#</span>
-				<span class="ability-score">
-				
-								
-					<i class="bi bi-star-fill"></i>
-					
-								
-					<i class="bi bi-star-fill"></i>
-					
-								
-					<i class="bi bi-star-fill"></i>
-					
-								
-					<i class="bi bi-star-fill"></i>
-					
-								
-					<i class="bi bi-star-fill"></i>
-					
-									
-				</span>
-			</li>
-			
-					
-				
-			<li>
-				<span class="ability-title">HTML</span>
-				<span class="ability-score">
-				
-								
-					<i class="bi bi-star-fill"></i>
-					
-								
-					<i class="bi bi-star-fill"></i>
-					
-								
-					<i class="bi bi-star-fill"></i>
-					
-								
-					<i class="bi bi-star-fill"></i>
-					
-								
-					<i class="bi bi-star-fill"></i>
-					
-									
-				</span>
-			</li>
-			
-					
-				
-			<li>
-				<span class="ability-title">PHP</span>
-				<span class="ability-score">
-				
-								
-					<i class="bi bi-star-fill"></i>
-					
-								
-					<i class="bi bi-star-fill"></i>
-					
-								
-					<i class="bi bi-star-fill"></i>
-					
-								
-					<i class="bi bi-star-fill"></i>
-					
-								
-					<i class="bi bi-star-fill"></i>
-					
-									
-				</span>
-			</li>
-			
-					
-			<li>
-				<span class="ability-title">Agile Development</span>
-				<span class="ability-score">
-				
-								
-					<i class="bi bi-star-fill"></i>
-					
-								
-					<i class="bi bi-star-fill"></i>
-					
-								
-					<i class="bi bi-star-fill"></i>
-					
-								
-					<i class="bi bi-star-fill"></i>
-					
-								
-					<i class="bi bi-star-fill"></i>
-					
-									
-				</span>
-			</li>
+				<h3>Languages</h3>
+				<div class="row" id="languages-container">
+					<!-- Languages loaded from view/data/skills.json -->
+				</div>
 
-					
-			<li>
-				<span class="ability-title">Artificial Intelligence / LLM Integration</span>
-				<span class="ability-score">
-				
-								
-					<i class="bi bi-star-fill"></i>
-					
-								
-					<i class="bi bi-star-fill"></i>
-					
-								
-					<i class="bi bi-star-fill"></i>
-					
-								
-					<i class="bi bi-star-fill"></i>
-					
-								
-					<i class="bi bi-star-fill"></i>
-					
-									
-				</span>
-			</li>
+				<hr />
 
-					
-			<li>
-				<span class="ability-title">Machine Learning</span>
-				<span class="ability-score">
-				
-								
-					<i class="bi bi-star-fill"></i>
-					
-								
-					<i class="bi bi-star-fill"></i>
-					
-								
-					<i class="bi bi-star-fill"></i>
-					
-								
-					<i class="bi bi-star-fill"></i>
-					
-								
-					<i class="bi bi-star-fill"></i>
-					
-									
-				</span>
-			</li>
-					
-			<li>
-				<span class="ability-title">Automation</span>
-				<span class="ability-score">
-				
-								
-					<i class="bi bi-star-fill"></i>
-					
-								
-					<i class="bi bi-star-fill"></i>
-					
-								
-					<i class="bi bi-star-fill"></i>
-					
-								
-					<i class="bi bi-star-fill"></i>
-					
-								
-					<i class="bi bi-star-fill"></i>
-					
-									
-				</span>
-			</li>
-					
-			<li>
-				<span class="ability-title">Python</span>
-				<span class="ability-score">
-				
-								
-					<i class="bi bi-star-fill"></i>
-					
-								
-					<i class="bi bi-star-fill"></i>
-					
-								
-					<i class="bi bi-star-fill"></i>
-					
-								
-					<i class="bi bi-star-fill"></i>
-					
-								
-					<i class="bi bi-star-fill"></i>
-					
-									
-				</span>
-			</li>
-
-					
-			<li>
-				<span class="ability-title">Project Architecture</span>
-				<span class="ability-score">
-				
-								
-					<i class="bi bi-star-fill"></i>
-					
-								
-					<i class="bi bi-star-fill"></i>
-					
-								
-					<i class="bi bi-star-fill"></i>
-					
-								
-					<i class="bi bi-star-fill"></i>
-					
-								
-					<i class="bi bi-star"></i>
-					
-									
-				</span>
-			</li>
-				
-					
-			<li>
-				<span class="ability-title">Data Science / Data Visualization</span>
-				<span class="ability-score">
-				
-								
-					<i class="bi bi-star-fill"></i>
-					
-								
-					<i class="bi bi-star-fill"></i>
-					
-								
-					<i class="bi bi-star-fill"></i>
-					
-								
-					<i class="bi bi-star-fill"></i>
-					
-								
-					<i class="bi bi-star"></i>
-					
-									
-				</span>
-			</li>
-
-
-			<li>
-				<span class="ability-title">Object Oriented Programming</span>
-				<span class="ability-score">
-				
-								
-					<i class="bi bi-star-fill"></i>
-					
-								
-					<i class="bi bi-star-fill"></i>
-					
-								
-					<i class="bi bi-star-fill"></i>
-					
-								
-					<i class="bi bi-star-fill"></i>
-					
-								
-					<i class="bi bi-star"></i>
-					
-									
-				</span>
-			</li>
-			
-
-					
-				
-			<li>
-				<span class="ability-title">Java</span>
-				<span class="ability-score">
-				
-								
-					<i class="bi bi-star-fill"></i>
-					
-								
-					<i class="bi bi-star-fill"></i>
-					
-								
-					<i class="bi bi-star-fill"></i>
-					
-								
-					<i class="bi bi-star-fill"></i>
-					
-								
-					<i class="bi bi-star"></i>
-					
-									
-				</span>
-			</li>
-			
-				
-			<li>
-				<span class="ability-title">SQL</span>
-				<span class="ability-score">
-				
-								
-					<i class="bi bi-star-fill"></i>
-					
-								
-					<i class="bi bi-star-fill"></i>
-					
-								
-					<i class="bi bi-star-fill"></i>
-					
-								
-					<i class="bi bi-star-fill"></i>
-					
-								
-					<i class="bi bi-star"></i>
-					
-									
-				</span>
-			</li>
-			
-					
-					
-					
-					
-			
-					
-			
-			
-		</ul>
-	</div>
-	<div class="col-md-6">
-		<ul class="no-bullets">
-			
-				
-			<li>
-				<span class="ability-title">Computer Networking</span>
-				<span class="ability-score">
-				
-								
-					<i class="bi bi-star-fill"></i>
-					
-								
-					<i class="bi bi-star-fill"></i>
-					
-								
-					<i class="bi bi-star-fill"></i>
-					
-								
-					<i class="bi bi-star-fill"></i>
-					
-								
-					<i class="bi bi-star"></i>
-					
-									
-				</span>
-			</li>
-				
-			<li>
-				<span class="ability-title">Command Line / Bash / Powershell</span>
-				<span class="ability-score">
-				
-								
-					<i class="bi bi-star-fill"></i>
-					
-								
-					<i class="bi bi-star-fill"></i>
-					
-								
-					<i class="bi bi-star-fill"></i>
-					
-								
-					<i class="bi bi-star-fill"></i>
-					
-								
-					<i class="bi bi-star"></i>
-					
-									
-				</span>
-			</li>
-			
-				
-				
-			<li>
-				<span class="ability-title">Web Development</span>
-				<span class="ability-score">
-				
-								
-					<i class="bi bi-star-fill"></i>
-					
-								
-					<i class="bi bi-star-fill"></i>
-					
-								
-					<i class="bi bi-star-fill"></i>
-					
-								
-					<i class="bi bi-star-fill"></i>
-					
-								
-					<i class="bi bi-star"></i>
-					
-									
-				</span>
-			</li>
-			
-
-			<li>
-				<span class="ability-title">JavaScript</span>
-				<span class="ability-score">
-				
-								
-					<i class="bi bi-star-fill"></i>
-					
-								
-					<i class="bi bi-star-fill"></i>
-					
-								
-					<i class="bi bi-star-fill"></i>
-					
-								
-					<i class="bi bi-star-fill"></i>
-					
-								
-					<i class="bi bi-star"></i>
-					
-									
-				</span>
-			</li>
-			
-
-					
-				
-			<li>
-				<span class="ability-title">Bootstrap Framework</span>
-				<span class="ability-score">
-				
-								
-					<i class="bi bi-star-fill"></i>
-					
-								
-					<i class="bi bi-star-fill"></i>
-					
-								
-					<i class="bi bi-star-fill"></i>
-					
-								
-					<i class="bi bi-star-fill"></i>
-					
-								
-					<i class="bi bi-star"></i>
-					
-									
-				</span>
-			</li>
-			
-				
-			
-			<li>
-				<span class="ability-title">Public Relations</span>
-				<span class="ability-score">
-				
-								
-					<i class="bi bi-star-fill"></i>
-					
-								
-					<i class="bi bi-star-fill"></i>
-					
-								
-					<i class="bi bi-star-fill"></i>
-					
-								
-					<i class="bi bi-star-fill"></i>
-					
-								
-					<i class="bi bi-star"></i>
-					
-									
-				</span>
-			</li>
-			
-			
-					
-
-				
-			<li>
-				<span class="ability-title">JSON</span>
-				<span class="ability-score">
-				
-								
-					<i class="bi bi-star-fill"></i>
-					
-								
-					<i class="bi bi-star-fill"></i>
-					
-								
-					<i class="bi bi-star-fill"></i>
-					
-								
-					<i class="bi bi-star-fill"></i>
-					
-								
-					<i class="bi bi-star"></i>
-					
-									
-				</span>
-			</li>
-			
-					
-				
-			<li>
-				<span class="ability-title">XML</span>
-				<span class="ability-score">
-				
-								
-					<i class="bi bi-star-fill"></i>
-					
-								
-					<i class="bi bi-star-fill"></i>
-					
-								
-					<i class="bi bi-star-fill"></i>
-					
-								
-					<i class="bi bi-star-fill"></i>
-					
-								
-					<i class="bi bi-star"></i>
-					
-									
-				</span>
-			</li>
-					
-					
-			<li>
-				<span class="ability-title">MVVM Pattern</span>
-				<span class="ability-score">
-				
-								
-					<i class="bi bi-star-fill"></i>
-					
-								
-					<i class="bi bi-star-fill"></i>
-					
-								
-					<i class="bi bi-star-fill"></i>
-					
-								
-					<i class="bi bi-star-fill"></i>
-					
-								
-					<i class="bi bi-star"></i>
-					
-									
-				</span>
-			</li>
-			
-				
-			<li>
-				<span class="ability-title">Mobile Development</span>
-				<span class="ability-score">
-				
-								
-					<i class="bi bi-star-fill"></i>
-					
-								
-					<i class="bi bi-star-fill"></i>
-					
-								
-					<i class="bi bi-star-fill"></i>
-					
-								
-					<i class="bi bi-star"></i>
-					
-								
-					<i class="bi bi-star"></i>
-					
-									
-				</span>
-			</li>
-			
-					
-			
-				
-			<li>
-				<span class="ability-title">C++</span>
-				<span class="ability-score">
-				
-								
-					<i class="bi bi-star-fill"></i>
-					
-								
-					<i class="bi bi-star-fill"></i>
-					
-								
-					<i class="bi bi-star-fill"></i>
-					
-								
-					<i class="bi bi-star"></i>
-					
-								
-					<i class="bi bi-star"></i>
-					
-									
-				</span>
-			</li>
-					
-				
-			<li>
-				<span class="ability-title">MVC Pattern</span>
-				<span class="ability-score">
-				
-								
-					<i class="bi bi-star-fill"></i>
-					
-								
-					<i class="bi bi-star-fill"></i>
-					
-								
-					<i class="bi bi-star-fill"></i>
-					
-								
-					<i class="bi bi-star"></i>
-					
-								
-					<i class="bi bi-star"></i>
-					
-									
-				</span>
-			</li>
-			
-					
-				
-					
-				
-			<li>
-				<span class="ability-title">CSS</span>
-				<span class="ability-score">
-				
-								
-					<i class="bi bi-star-fill"></i>
-					
-								
-					<i class="bi bi-star-fill"></i>
-					
-								
-					<i class="bi bi-star-fill"></i>
-					
-								
-					<i class="bi bi-star"></i>
-					
-								
-					<i class="bi bi-star"></i>
-					
-									
-				</span>
-			</li>
-			
-					
-			
-					
-				
-		</ul>
-	</div>
-	
-		
-</div>
-<!-- This project was made possible by Pascal's framework.
-<div class="text-center project-referal">
-	<p>This project is build on a custom made PHP framework.</p>
-	<a href="https://github.com/pascalvgemert/resume" class="btn btn-primary" target="_blank">See project on Github</a>
-</div>
--->
-<hr />
-
-<h3>Languages</h3>
-
-<div class="row">
-
-		
-	<div class="col-md-6">
-		<ul class="no-bullets">		
-					
-
-				
-			<li>
-				<span class="ability-title">English (Daily use)</span>
-				<span class="ability-score">
-				
-								
-					<i class="bi bi-star-fill"></i>
-					
-								
-					<i class="bi bi-star-fill"></i>
-					
-								
-					<i class="bi bi-star-fill"></i>
-					
-								
-					<i class="bi bi-star-fill"></i>
-					
-								
-					<i class="bi bi-star-fill"></i>
-					
-									
-				</span>
-			</li>
-			
-			 
-			
-		</ul>
-	</div>
-	<div class="col-md-6">
-		<ul class="no-bullets">
-			
-					
-				
-			<li>
-				<span class="ability-title">Spanish (Mother tongue)</span>
-				<span class="ability-score">
-				
-								
-					<i class="bi bi-star-fill"></i>
-					
-								
-					<i class="bi bi-star-fill"></i>
-					
-								
-					<i class="bi bi-star-fill"></i>
-					
-								
-					<i class="bi bi-star"></i>
-					
-								
-					<i class="bi bi-star"></i>
-					
-									
-				</span>
-			</li>
-			
-					
-				
-		</ul>
-	</div>
-	
-		
-</div>
-
-<hr />
-
-<h3>Tools</h3>
-
-<div class="row">
-		
-	<div class="col-md-6">
-		<ul class="no-bullets">
-		
-				
-			<li>
-				<span class="ability-title">Windows (10+ years)</span>
-				<span class="ability-score">
-				
-								
-					<i class="bi bi-star-fill"></i>
-					
-								
-					<i class="bi bi-star-fill"></i>
-					
-								
-					<i class="bi bi-star-fill"></i>
-					
-								
-					<i class="bi bi-star-fill"></i>
-					
-								
-					<i class="bi bi-star-fill"></i>
-					
-									
-				</span>
-			</li>
-			
-					
-				
-			<li>
-				<span class="ability-title">MS Office (10+ years)</span>
-				<span class="ability-score">
-				
-								
-					<i class="bi bi-star-fill"></i>
-					
-								
-					<i class="bi bi-star-fill"></i>
-					
-								
-					<i class="bi bi-star-fill"></i>
-					
-								
-					<i class="bi bi-star-fill"></i>
-					
-								
-					<i class="bi bi-star-fill"></i>
-					
-									
-				</span>
-			</li>
-			
-					
-					
-				
-			<li>
-				<span class="ability-title">Google Chrome (10+ years)</span>
-				<span class="ability-score">
-				
-								
-					<i class="bi bi-star-fill"></i>
-					
-								
-					<i class="bi bi-star-fill"></i>
-					
-								
-					<i class="bi bi-star-fill"></i>
-					
-								
-					<i class="bi bi-star-fill"></i>
-					
-								
-					<i class="bi bi-star-fill"></i>
-					
-									
-				</span>
-			</li>
-			
-					
-				
-			<li>
-				<span class="ability-title">Sublime Text (10+ years)</span>
-				<span class="ability-score">
-				
-								
-					<i class="bi bi-star-fill"></i>
-					
-								
-					<i class="bi bi-star-fill"></i>
-					
-								
-					<i class="bi bi-star-fill"></i>
-					
-								
-					<i class="bi bi-star-fill"></i>
-					
-								
-					<i class="bi bi-star-fill"></i>
-					
-									
-				</span>
-			</li>
-			
-					
-			<li>
-				<span class="ability-title">Notepad++ (10+ years)</span>
-				<span class="ability-score">
-				
-								
-					<i class="bi bi-star-fill"></i>
-					
-								
-					<i class="bi bi-star-fill"></i>
-					
-								
-					<i class="bi bi-star-fill"></i>
-					
-								
-					<i class="bi bi-star-fill"></i>
-					
-								
-					<i class="bi bi-star-fill"></i>
-					
-									
-				</span>
-			</li>
-
-			
-			<li>
-				<span class="ability-title">Visual Studio (8+ years)</span>
-				<span class="ability-score">
-				
-								
-					<i class="bi bi-star-fill"></i>
-					
-								
-					<i class="bi bi-star-fill"></i>
-					
-								
-					<i class="bi bi-star-fill"></i>
-					
-								
-					<i class="bi bi-star-fill"></i>
-					
-								
-					<i class="bi bi-star"></i>
-					
-									
-				</span>
-			</li>	
-			
-				
-			<li>
-				<span class="ability-title">Azure Web Services (3+ years)</span>
-				<span class="ability-score">
-				
-								
-					<i class="bi bi-star-fill"></i>
-					
-								
-					<i class="bi bi-star-fill"></i>
-					
-								
-					<i class="bi bi-star-fill"></i>
-					
-								
-					<i class="bi bi-star-fill"></i>
-					
-								
-					<i class="bi bi-star"></i>
-					
-									
-				</span>
-			</li>
-			
-			
-		</ul>
-	</div>
-	<div class="col-md-6">
-		<ul class="no-bullets">
-			
-			
-					
-			<li>
-				<span class="ability-title">Mac (10+ years)</span>
-				<span class="ability-score">
-				
-								
-					<i class="bi bi-star-fill"></i>
-					
-								
-					<i class="bi bi-star-fill"></i>
-					
-								
-					<i class="bi bi-star-fill"></i>
-					
-								
-					<i class="bi bi-star-fill"></i>
-					
-								
-					<i class="bi bi-star"></i>
-					
-									
-				</span>
-			</li>
-			
-					
-				
-			<li>
-				<span class="ability-title">Linux (8+ years)</span>
-				<span class="ability-score">
-				
-								
-					<i class="bi bi-star-fill"></i>
-					
-								
-					<i class="bi bi-star-fill"></i>
-					
-								
-					<i class="bi bi-star-fill"></i>
-					
-								
-					<i class="bi bi-star-fill"></i>
-					
-								
-					<i class="bi bi-star"></i>
-					
-									
-				</span>
-			</li>
-			
-					
-			<li>
-				<span class="ability-title">Firefox (8+ years)</span>
-				<span class="ability-score">
-				
-								
-					<i class="bi bi-star-fill"></i>
-					
-								
-					<i class="bi bi-star-fill"></i>
-					
-								
-					<i class="bi bi-star-fill"></i>
-					
-								
-					<i class="bi bi-star-fill"></i>
-					
-								
-					<i class="bi bi-star"></i>
-					
-									
-				</span>
-			</li>
-			
-					
-				
-			<li>
-				<span class="ability-title">Adobe Photoshop (6+ years)</span>
-				<span class="ability-score">
-				
-								
-					<i class="bi bi-star-fill"></i>
-					
-								
-					<i class="bi bi-star-fill"></i>
-					
-								
-					<i class="bi bi-star-fill"></i>
-					
-								
-					<i class="bi bi-star-fill"></i>
-					
-								
-					<i class="bi bi-star"></i>
-					
-									
-				</span>
-			</li>
-				
-				
-			<li>
-				<span class="ability-title">Filezilla / FTP (5+ years)</span>
-				<span class="ability-score">
-				
-								
-					<i class="bi bi-star-fill"></i>
-					
-								
-					<i class="bi bi-star-fill"></i>
-					
-								
-					<i class="bi bi-star-fill"></i>
-					
-								
-					<i class="bi bi-star-fill"></i>
-					
-								
-					<i class="bi bi-star"></i>
-					
-									
-				</span>
-			</li>
-						
-					
-				
-			<li>
-				<span class="ability-title">Wireshark (4+ years)</span>
-				<span class="ability-score">
-				
-								
-					<i class="bi bi-star-fill"></i>
-					
-								
-					<i class="bi bi-star-fill"></i>
-					
-								
-					<i class="bi bi-star-fill"></i>
-					
-								
-					<i class="bi bi-star"></i>
-					
-								
-					<i class="bi bi-star"></i>
-					
-									
-				</span>
-			</li>
-			
-					
-				
-			<li>
-				<span class="ability-title">Edge (1 years)</span>
-				<span class="ability-score">
-				
-								
-					<i class="bi bi-star-fill"></i>
-					
-								
-					<i class="bi bi-star-fill"></i>
-					
-								
-					<i class="bi bi-star"></i>
-					
-								
-					<i class="bi bi-star"></i>
-					
-								
-					<i class="bi bi-star"></i>
-					
-									
-				</span>
-			</li>
-			
-					
-				
-				
-		
-				
-		</ul>
-	</div>
-	
-	</div>			</div>
+				<h3>Tools</h3>
+				<div class="row" id="tools-container">
+					<!-- Tools loaded from view/data/skills.json -->
+				</div>
 		</div>
 		
 		<div id="interests" class="container">
@@ -1908,88 +839,36 @@
 
 			<hr />
 
+			<!-- Interactive Interest Galaxy -->
+			<div id="interest-galaxy-container">
+				<!-- Instructions -->
+				<div class="galaxy-instructions">
+					<p><i class="bi bi-hand-index-thumb"></i><strong>Click</strong> a node to view details</p>
+					<p><i class="bi bi-mouse"></i><strong>Hover</strong> to highlight connections</p>
+					<p><i class="bi bi-link-45deg"></i>Lines show how interests relate</p>
+				</div>
 
-		
-<div class="row">
-	<div class="col-md-4 left">
-		<img src="view/images/interests/volume.png" alt="Music" width="220" height="220" />
-	</div>
-	<div class="col-md-8 interest-content">
-		<h3>Music</h3>
-		<p>
-			Music is my biggest interest and hobby. That includes anything from listening to performing. I started my appreciation when I first learned the flute in 7th grade and developed music theory in my head using mathematical patterns. I've taught myself multiple instruments, including 3 different saxophones (alto, tenor, bari), guitar, piano, harmonica, drums, and beatboxing.
-		</p>
-	</div>
-</div>
+				<!-- Legend -->
+				<div class="galaxy-legend">
+					<h4>Node Size</h4>
+					<div class="legend-item">
+						<div class="legend-circle primary"></div>
+						<span>Primary Interest</span>
+					</div>
+					<div class="legend-item">
+						<div class="legend-circle secondary"></div>
+						<span>Secondary Interest</span>
+					</div>
+					<div class="legend-item">
+						<div class="legend-circle tertiary"></div>
+						<span>Hobby</span>
+					</div>
+				</div>
 
-		
-<div class="row">
-	<div class="col-md-4 right">
-		<img src="view/images/interests/bike.png" alt="Bicycling" width="220" height="220" />
-	</div>
-	<div class="col-md-8 interest-content">
-		<h3>Bicycling</h3>
-		<p>
-			I used to ride my bike every day, and while I don't ride quite as often now, it's still one of my favorite ways to get around and unwind. Fayetteville has some of the prettiest trails, and I love exploring new spots whenever I can. I do not ride professionally or for races, only for recreational fun!	<br><br>
-			Here is a picture of me with my newest road bike.
-			<br>
-			<a href="#" onMouseOver="ShowPicture('hoverpic3',1)" onMouseOut="ShowPicture('hoverpic3',0)">2014 Redline Metro Classic</a>
-			<div class="imagehover" id="hoverpic3"><img src="view/images/interests/bicycleme.jpg"></div>	
-		</p>
-	</div>
-</div>
+				<!-- Galaxy Canvas -->
+				<div id="interest-galaxy"></div>
+			</div>
 
-		
-<div class="row">
-	<div class="col-md-4 left">
-		<img src="view/images/interests/gamecontroller.png" alt="Video Games" width="220" height="220" />
-	</div>
-	<div class="col-md-8 interest-content">
-		<h3>Video Games</h3>
-		<p>
-			Video games are the best way to relax after long days. Although I am a fan of PlayStation and Nintendo, I am much more of a Steam geek now. Ever since I custom built my desktop computer, computer games have been much better and I love nothing more than my companion cube!
-		</p>
-	</div>
-</div>
-
-		
-<div class="row">
-	<div class="col-md-4 right">
-		<img src="view/images/interests/game.png" alt="Socialize" width="220" height="220" />
-	</div>
-	<div class="col-md-8 interest-content">
-		<h3>Board Games</h3>
-		<p>
-			I own a collection of 597 board games and love bringing people together to enjoy them. Whether it’s hosting game nights, attending group outings, or meeting someone new, I thrive in social settings.
-		</p>
-	</div>
-</div>
-
-		
-<div class="row">
-	<div class="col-md-4 left">
-		<img src="view/images/interests/locked.png" alt="Puzzles" width="220" height="220" />
-	</div>
-	<div class="col-md-8 interest-content">
-		<h3>Puzzles</h3>
-		<p>
-			Life is chock-full of wibbly-wobbly puzzles and patterns. From video games and cybersecurity challenges to everyday household problems, I see them all as solvable puzzles. I also enjoy traditional jigsaw puzzles too.
-			<br><br>
-			Here's my first completed 1000-piece puzzle. 
-			<br>
-			<a href="#" onMouseOver="ShowPicture('hoverpic1',1)" onMouseOut="ShowPicture('hoverpic1',0)">In Blue, 1925 by Kandinsky</a>
-			<div class="imagehover" id="hoverpic1"><img src="view/images/interests/inblue.jpg"></div>
-			<br>
-			I am currently working on this 1000-piece puzzle. 
-			<br>
-			<a href="#" onMouseOver="ShowPicture('hoverpic2',1)" onMouseOut="ShowPicture('hoverpic2',0)">Color Study. Squares with Concentric Circles, 1913 by Kandinsky</a>
-			<div class="imagehover" id="hoverpic2"><img src="view/images/interests/squaresandcircles.jpg"></div>
-
-		</p>
-	</div>
-</div>
-
-		
 		</div>
 		
 		<div class="background-gray">
@@ -2001,35 +880,53 @@
 
 <hr />
 
-<div class="row">
-	<div class="col-md-6">
-		<ul class="no-bullets">
-			<li>
-				<a href="https://www.linkedin.com/pub/adrian-ordorica/84/445/9ab" target="_blank">
-					<span class="icon icon-linkedin"><img src="view/images/32-linkedin.png" alt="Linked In" height="32" width="32"></span>
-					LinkedIn.com				</a>
-			</li>
-		</ul>
+<div class="contact-cards-container">
+	<div class="contact-card" data-contact="linkedin">
+		<a href="https://www.linkedin.com/pub/adrian-ordorica/84/445/9ab" target="_blank">
+			<div class="contact-card-inner">
+				<div class="contact-icon">
+					<i class="bi bi-linkedin"></i>
+				</div>
+				<h4>LinkedIn</h4>
+				<p class="contact-description">Connect professionally and view my career history</p>
+				<span class="contact-cta">
+					<span class="cta-text">View Profile</span>
+					<i class="bi bi-arrow-right-circle"></i>
+				</span>
+			</div>
+		</a>
 	</div>
-	<div class="col-md-6">
-		<ul class="no-bullets">
-			<li>
-				<a href="mailto:cyberwizard18+webmail@gmail.com">
-					<span class="icon icon-email"><img src="view/images/email.png" alt="Email" height="32" width="32"></span>
-					<span style="unicode-bidi:bidi-override; direction: rtl;">
-						moc.liamg@etisbew+81draziwrebyc					</span>
-				</a>
-			</li>
-		</ul>
+
+	<div class="contact-card" data-contact="email">
+		<a href="#" data-email="moc.liamg@liambew+81draziwrebyc">
+			<div class="contact-card-inner">
+				<div class="contact-icon">
+					<i class="bi bi-envelope-fill"></i>
+				</div>
+				<h4>Email</h4>
+				<p class="contact-description">Send me a message directly</p>
+				<span class="contact-cta">
+					<span class="cta-text" style="unicode-bidi:bidi-override; direction: rtl;">moc.liamg@etisbew+81draziwrebyc</span>
+					<i class="bi bi-arrow-right-circle"></i>
+				</span>
+			</div>
+		</a>
 	</div>
-	<div class="col-md-6">
-		<ul class="no-bullets">
-			<li>
-				<a href="view/files/OnlineResume.pdf" target="_blank">
-					<span class="icon icon-linkedin"><img src="view/images/32-pdf.png" alt="Resume" height="32" width="32"></span>
-					Shortened Page Resume				</a>
-			</li>
-		</ul>
+
+	<div class="contact-card" data-contact="resume">
+		<a href="view/files/OnlineResume.pdf" target="_blank">
+			<div class="contact-card-inner">
+				<div class="contact-icon">
+					<i class="bi bi-file-earmark-pdf-fill"></i>
+				</div>
+				<h4>Resume</h4>
+				<p class="contact-description">Download a shortened PDF version</p>
+				<span class="contact-cta">
+					<span class="cta-text">Download PDF</span>
+					<i class="bi bi-download"></i>
+				</span>
+			</div>
+		</a>
 	</div>
 </div>
 
@@ -2057,19 +954,49 @@
 		
 		<!-- Bootstrap Bundle with Popper -->
 		<script src="view/js/bootstrap.bundle.min.js"></script>
-		
-		<script>
-		window.addEventListener("scroll", function () {
-			const sidebar = document.querySelector(".navbar");
-			const triggerPoint = document.querySelector(".jumbotron").offsetHeight - 60;
 
-			if (window.scrollY > triggerPoint) {
-			sidebar.classList.add("sidebar-visible");
-			sidebar.classList.remove("sidebar-hidden");
-			} else {
-			sidebar.classList.remove("sidebar-visible");
-			sidebar.classList.add("sidebar-hidden");
-			}
+		<!-- Modular Effects and Console -->
+		<script src="view/js/effects.js"></script>
+		<script src="view/js/console.js"></script>
+		<script src="view/js/skills.js"></script>
+
+		<!-- Scroll-driven journey map -->
+		<script src="view/js/journey-map.js"></script>
+
+		<!-- Interest Galaxy -->
+		<script src="view/js/interest-galaxy.js"></script>
+
+		<!-- Profile Interactive Features -->
+		<script src="view/js/profile.js"></script>
+
+		<script>
+		// Initialize visual effects
+		document.addEventListener('DOMContentLoaded', function() {
+			// Initialize particle system on jumbotron
+			ParticleSystem.init('.jumbotron', { count: 80, color: '#22A39F' });
+
+			// Initialize glitch text on h1
+			GlitchText.init('h1[data-text]');
+
+			// Initialize parallax scrolling
+			ParallaxScroll.init();
+
+			// Initialize modular console
+			CheddarConsole.init({ autoOpen: false });
+
+			// Sidebar animation
+			window.addEventListener("scroll", function () {
+				const sidebar = document.querySelector(".navbar");
+				const triggerPoint = document.querySelector(".jumbotron").offsetHeight - 60;
+
+				if (window.scrollY > triggerPoint) {
+					sidebar.classList.add("sidebar-visible");
+					sidebar.classList.remove("sidebar-hidden");
+				} else {
+					sidebar.classList.remove("sidebar-visible");
+					sidebar.classList.add("sidebar-hidden");
+				}
+			});
 		});
 		</script>
 	</body>

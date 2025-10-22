@@ -1,0 +1,215 @@
+/* Profile Section Interactive Enhancements */
+
+/* Position profile section for effects */
+#profile.container {
+	position: relative;
+}
+
+/* Skill Tag Cloud Background */
+.skill-tag-cloud {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	overflow: hidden;
+	pointer-events: none;
+	z-index: 0;
+	opacity: 0.15;
+}
+
+.skill-tag {
+	position: absolute;
+	font-size: 14px;
+	font-weight: 600;
+	color: #22A39F;
+	white-space: nowrap;
+	transition: all 0.3s ease;
+	pointer-events: auto;
+	cursor: pointer;
+	padding: 5px 10px;
+	border-radius: 4px;
+}
+
+.skill-tag:hover {
+	opacity: 1 !important;
+	transform: scale(1.2);
+	background: rgba(34, 163, 159, 0.1);
+	z-index: 10;
+}
+
+/* Ensure profile content sits above tag cloud */
+#profile > * {
+	position: relative;
+	z-index: 1;
+}
+
+/* Typewriter Effect */
+.typewriter-text {
+	display: inline;
+	border-right: 2px solid #22A39F;
+	animation: blink 0.7s step-end infinite;
+}
+
+.typewriter-text.typing-complete {
+	border-right: none;
+	animation: none;
+}
+
+@keyframes blink {
+	from, to {
+		border-color: transparent;
+	}
+	50% {
+		border-color: #22A39F;
+	}
+}
+
+/* Stats Counter Styles */
+.profile-stats {
+	margin: 30px 0;
+	padding: 20px;
+	background: rgba(34, 163, 159, 0.05);
+	border-radius: 12px;
+	border: 1px solid rgba(34, 163, 159, 0.15);
+}
+
+.stat-item {
+	text-align: center;
+	padding: 15px;
+}
+
+.stat-value {
+	font-size: 36px;
+	font-weight: 700;
+	color: #22A39F;
+	display: block;
+	margin-bottom: 5px;
+	font-family: 'Courier New', monospace;
+}
+
+.stat-label {
+	font-size: 13px;
+	color: #727878;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	font-weight: 600;
+}
+
+.stat-progress {
+	margin-top: 10px;
+	height: 6px;
+	background: rgba(34, 163, 159, 0.1);
+	border-radius: 3px;
+	overflow: hidden;
+	position: relative;
+}
+
+.stat-progress-bar {
+	height: 100%;
+	background: linear-gradient(90deg, #22A39F 0%, #1c8784 100%);
+	border-radius: 3px;
+	width: 0%;
+	transition: width 2s cubic-bezier(0.4, 0, 0.2, 1);
+	position: relative;
+}
+
+.stat-progress-bar::after {
+	content: '';
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background: linear-gradient(90deg,
+		transparent 0%,
+		rgba(255, 255, 255, 0.3) 50%,
+		transparent 100%);
+	animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+	0% {
+		transform: translateX(-100%);
+	}
+	100% {
+		transform: translateX(100%);
+	}
+}
+
+/* Stat Icons */
+.stat-icon {
+	font-size: 28px;
+	color: #22A39F;
+	margin-bottom: 10px;
+	display: block;
+	opacity: 0;
+	transform: scale(0);
+	animation: popIn 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+}
+
+@keyframes popIn {
+	0% {
+		opacity: 0;
+		transform: scale(0) rotate(-180deg);
+	}
+	100% {
+		opacity: 1;
+		transform: scale(1) rotate(0deg);
+	}
+}
+
+.stat-item:nth-child(1) .stat-icon { animation-delay: 0.1s; }
+.stat-item:nth-child(2) .stat-icon { animation-delay: 0.2s; }
+.stat-item:nth-child(3) .stat-icon { animation-delay: 0.3s; }
+.stat-item:nth-child(4) .stat-icon { animation-delay: 0.4s; }
+
+/* Responsive adjustments */
+/* Medium to large screens (tablets and standard desktops, 768px to 1199px) */
+@media (max-width: 1199px) and (min-width: 768px) {
+	.profile-stats {
+		padding: 20px 15px;
+	}
+
+	.stat-item {
+		padding: 20px 10px;
+		margin-bottom: 20px;
+	}
+
+	.stat-value {
+		font-size: 32px;
+	}
+
+	.stat-label {
+		font-size: 12px;
+	}
+}
+
+/* Small screens (mobile, below 768px) */
+@media (max-width: 767px) {
+	.skill-tag-cloud {
+		opacity: 0.08;
+	}
+
+	.skill-tag {
+		font-size: 12px;
+		padding: 3px 8px;
+	}
+
+	.profile-stats {
+		padding: 15px 10px;
+	}
+
+	.stat-item {
+		padding: 10px 5px;
+		margin-bottom: 15px;
+	}
+
+	.stat-value {
+		font-size: 28px;
+	}
+
+	.stat-icon {
+		font-size: 24px;
+	}
+}

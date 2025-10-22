@@ -28,22 +28,28 @@ hr { margin: 40px 0px; border-color: #727878; opacity: 0.2; filter:alpha(opacity
 .jumbotron {
 	background: no-repeat center right fixed; /* url(images/background.jpg) */
 	/*background-image: url(images/tower_scope_animation.gif); */
-	
-	-webkit-background-size: 100%; 
-    -moz-background-size: 100%; 
-    -o-background-size: 100%; 
-    background-size: 100%; 
-	
+
+	-webkit-background-size: 100%;
+    -moz-background-size: 100%;
+    -o-background-size: 100%;
+    background-size: 100%;
+
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
 	background-size: cover;
-	
+
 /*	-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='images/background.jpg', sizingMethod='scale')";
 	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='images/background.jpg', sizingMethod='scale');	*/
-	
+
 	margin-bottom: 0px;
 	padding: 0px;
+
+	/* Smooth transitions for background changes */
+	transition: opacity 0.3s ease-in-out;
+}
+.jumbotron.bg-transitioning {
+	opacity: 0.4;
 }  
 .jumbotron:before { 
 	border: 1px solid #FFFFFF;
@@ -154,12 +160,51 @@ hr { margin: 40px 0px; border-color: #727878; opacity: 0.2; filter:alpha(opacity
 
 #profile .row > div { margin-bottom: 20px; }
 #profile .row > div img { width: 100%; max-width: 246px; height: auto; }
+
+/* Profile details list styling */
+.profile-details { margin: 0; }
+.profile-details dt {
+	font-weight: 600;
+	color: #22A39F;
+	margin-top: 12px;
+	margin-bottom: 4px;
+}
+.profile-details dt:first-child { margin-top: 0; }
+.profile-details dd {
+	margin-left: 0;
+	margin-bottom: 0;
+	color: #434242;
+}
 	
-#experiences .experience { margin-bottom: 20px; }
+#experiences .experience { margin-bottom: 20px; position: relative; }
 #experiences .experience p > strong { display: block; padding-top: 8px; margin-bottom: 10px; }
 #experiences .experience .experience-details { display: block; margin-top: 6px; }
 #experiences .experience .experience-details * { color: #22A39F; }
 #experiences .experience .experience-details .seperator { color: #BCBCBC; }
+
+/* Click to expand functionality */
+#experiences .experience.expandable { cursor: pointer; }
+#experiences .experience.expandable .col-md-8::after {
+	content: "\f282"; /* Bootstrap Icons chevron-down */
+	font-family: "bootstrap-icons";
+	position: absolute;
+	right: 20px;
+	top: 15px;
+	font-size: 20px;
+	color: #22A39F;
+	transition: transform 0.3s ease;
+}
+#experiences .experience.expandable.expanded .col-md-8::after {
+	transform: rotate(180deg);
+}
+#experiences .experience .hidden-phone {
+	max-height: 0;
+	overflow: hidden;
+	transition: max-height 0.3s ease;
+}
+#experiences .experience.expanded .hidden-phone {
+	max-height: 500px;
+}
 
 #abilities ul > li { min-height: 30px; padding: 3px 0px; }
 #abilities ul > li:hover { background: #F2F2F2; }
@@ -199,10 +244,197 @@ hr { margin: 40px 0px; border-color: #727878; opacity: 0.2; filter:alpha(opacity
 }
 
 #contact { padding-bottom: 200px; }
-#contact h2, #contact .row * { color: #FFFFFF; }
-#contact a { display: block; line-height: 32px; margin-bottom: 20px; opacity: 0.6; filter:alpha(opacity=60);  }
-#contact a .icon { float: left; margin-right: 20px; }
-#contact a:hover { opacity: 1; filter:alpha(opacity=100); text-decoration: none; }
+#contact h2, #contact .lead * { color: #FFFFFF; }
+
+/* Contact Cards Container */
+.contact-cards-container {
+	/* Flexbox fallback for better mobile support */
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: normal;
+	-ms-flex-direction: row;
+	flex-direction: row;
+	-ms-flex-wrap: wrap;
+	flex-wrap: wrap;
+	gap: 30px;
+	margin: 40px 0;
+}
+
+/* Use Grid on supporting browsers */
+@supports (display: grid) {
+	.contact-cards-container {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+	}
+}
+
+/* Individual Contact Card */
+.contact-card {
+	background: rgba(255, 255, 255, 0.1);
+	border-radius: 12px;
+	overflow: hidden;
+	transition: all 0.3s ease;
+	border: 2px solid rgba(255, 255, 255, 0.2);
+	position: relative;
+	/* Flexbox fallback sizing */
+	-webkit-box-flex: 1;
+	-ms-flex: 1 1 280px;
+	flex: 1 1 280px;
+	min-width: 280px;
+}
+
+.contact-card::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: linear-gradient(135deg, rgba(34, 163, 159, 0.1) 0%, rgba(34, 163, 159, 0.05) 100%);
+	opacity: 0;
+	transition: opacity 0.3s ease;
+	z-index: 0;
+}
+
+.contact-card:hover::before {
+	opacity: 1;
+}
+
+.contact-card:hover {
+	transform: translateY(-8px);
+	border-color: #22A39F;
+	box-shadow: 0 12px 24px rgba(34, 163, 159, 0.3);
+}
+
+.contact-card a {
+	text-decoration: none;
+	display: block;
+	padding: 40px 30px;
+	position: relative;
+	z-index: 1;
+}
+
+.contact-card-inner {
+	text-align: center;
+	position: relative;
+}
+
+/* Contact Icon */
+.contact-icon {
+	width: 80px;
+	height: 80px;
+	margin: 0 auto 20px;
+	background: rgba(34, 163, 159, 0.2);
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transition: all 0.3s ease;
+}
+
+.contact-icon i {
+	font-size: 36px;
+	color: #22A39F;
+	transition: all 0.3s ease;
+}
+
+.contact-card:hover .contact-icon {
+	background: #22A39F;
+	transform: scale(1.1) rotate(5deg);
+}
+
+.contact-card:hover .contact-icon i {
+	color: #FFFFFF;
+	transform: scale(1.1);
+}
+
+/* Card Text */
+.contact-card h4 {
+	color: #FFFFFF;
+	font-size: 24px;
+	font-weight: 600;
+	margin-bottom: 12px;
+	transition: color 0.3s ease;
+}
+
+.contact-description {
+	color: rgba(255, 255, 255, 0.7);
+	font-size: 14px;
+	line-height: 1.6;
+	margin-bottom: 20px;
+	min-height: 40px;
+}
+
+/* CTA (Call to Action) */
+.contact-cta {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 10px;
+	color: #22A39F;
+	font-weight: 600;
+	font-size: 14px;
+	transition: all 0.3s ease;
+}
+
+.contact-cta i {
+	font-size: 20px;
+	transition: transform 0.3s ease;
+}
+
+.contact-card:hover .contact-cta {
+	color: #FFFFFF;
+}
+
+.contact-card:hover .contact-cta i {
+	transform: translateX(5px);
+}
+
+.contact-card:hover .contact-cta .bi-download {
+	transform: translateY(3px);
+}
+
+/* Responsive adjustments */
+@media (max-width: 767px) {
+	.contact-cards-container {
+		gap: 20px;
+		/* Force single column on mobile for both flex and grid */
+		-webkit-box-orient: vertical;
+		-webkit-box-direction: normal;
+		-ms-flex-direction: column;
+		flex-direction: column;
+	}
+
+	@supports (display: grid) {
+		.contact-cards-container {
+			grid-template-columns: 1fr;
+		}
+	}
+
+	.contact-card {
+		/* Ensure cards are full width on mobile */
+		-ms-flex: 1 1 100%;
+		flex: 1 1 100%;
+		min-width: 100%;
+		/* Increase opacity slightly for better visibility on mobile */
+		background: rgba(255, 255, 255, 0.15);
+	}
+
+	.contact-card a {
+		padding: 30px 20px;
+	}
+
+	.contact-icon {
+		width: 70px;
+		height: 70px;
+	}
+
+	.contact-icon i {
+		font-size: 32px;
+	}
+}
 
 .opl {
 	position:absolute;
@@ -241,21 +473,26 @@ hr { margin: 40px 0px; border-color: #727878; opacity: 0.2; filter:alpha(opacity
 	
 	.container { padding: 60px 20px; min-width: 280px; }
 	.hidden-phone { display: none; }
-	
+
 	#profile .row * { text-align: center; }
-	
+
 	#experiences .experience .experience-details > span { display: block; margin-bottom: 6px; }
 	#experiences .experience .experience-details .seperator { display: none; }
+
+	/* Make experiences expandable on mobile */
+	#experiences .experience { padding: 15px; border-radius: 8px; transition: background-color 0.2s ease; }
+	#experiences .experience.expandable:hover { background-color: #f8f8f8; }
+	#experiences .experience .hidden-phone { display: block !important; }
+	#experiences .experience.expandable .col-md-8 { padding-right: 40px; }
 	
 	#interests .left { float: none; }
 	#interests .right { float: none; }
 	
 	#interests > * { text-align: center; }
-	#interests img { width: 50%; height: auto; float: none !important; } 
+	#interests img { width: 50%; height: auto; float: none !important; }
 	#interests .interest-content { padding: 20px 0px; }
-	
+
 	#contact { padding-bottom: 60px; }
-	#contact a .icon { float: left; margin-right: 10px; }
 }    
 
 @media only screen and (orientation: portrait) and (max-width: 767px)  {

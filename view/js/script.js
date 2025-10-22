@@ -1,13 +1,15 @@
 var lnStickyNavigation;
 
 $(document).ready(function()
-{	
+{
 	applyHeader();
-	applyNavigation(); 
+	applyNavigation();
 	applyMailTo();
 	applyResize();
 	checkHash();
 	checkBrowser();
+	applyExpandableExperiences();
+	applyJumbotronCycler();
 });
 
 /* HEADER FUNCTIONS */
@@ -104,13 +106,17 @@ function stickyNavigation()
 
 function applyMailTo()
 {
-	$('a[href*=mailto]').on('click', function(e)
+	$('a[data-email]').on('click', function(e)
 	{
-		var lstrEmail = $(this).attr('href').replace('mailto:', '');
-		
-		lstrEmail = lstrEmail.split('').reverse().join('')
-		
-		$(this).attr('href', 'mailto:' + lstrEmail);
+		e.preventDefault();
+
+		var lstrEmail = $(this).attr('data-email');
+
+		// Reverse the obfuscated email
+		lstrEmail = lstrEmail.split('').reverse().join('');
+
+		// Navigate to mailto link
+		window.location.href = 'mailto:' + lstrEmail;
 	});
 }
 
@@ -191,14 +197,126 @@ function searchString(paData)
 	}
 }
 	
-function searchVersion(pstrDataString) 
+function searchVersion(pstrDataString)
 {
 	var lnIndex = pstrDataString.indexOf(this.versionSearchString);
-	
-	if(lnIndex == -1) 
+
+	if(lnIndex == -1)
 	{
 		return;
 	}
-	
+
 	return parseFloat(pstrDataString.substring(lnIndex + this.versionSearchString.length + 1));
-}	
+}
+
+/* EXPANDABLE EXPERIENCES FUNCTION */
+
+function applyExpandableExperiences()
+{
+	// Only apply on mobile (viewport width <= 767px)
+	function checkAndApplyExpandable()
+	{
+		if($(window).width() <= 767)
+		{
+			// Add expandable class to all experience items
+			$('#experiences .experience').addClass('expandable');
+
+			// Remove any existing click handlers to prevent duplicates
+			$('#experiences .experience').off('click.expandable');
+
+			// Add click handler
+			$('#experiences .experience').on('click.expandable', function(e)
+			{
+				// Prevent triggering when clicking on links
+				if($(e.target).is('a') || $(e.target).closest('a').length > 0)
+				{
+					return;
+				}
+
+				$(this).toggleClass('expanded');
+			});
+		}
+		else
+		{
+			// Remove expandable functionality on desktop
+			$('#experiences .experience').removeClass('expandable expanded');
+			$('#experiences .experience').off('click.expandable');
+		}
+	}
+
+	// Apply on load
+	checkAndApplyExpandable();
+
+	// Re-apply on window resize
+	$(window).on('resize', function()
+	{
+		checkAndApplyExpandable();
+	});
+}
+
+/* JUMBOTRON GIF CYCLER FUNCTION */
+
+function applyJumbotronCycler()
+{
+	// Array of available background GIFs
+	var backgrounds = [
+		'view/images/awesome_animation.gif',
+		'view/images/boxes_animation.gif',
+		'view/images/circle_animation.gif',
+		'view/images/endless_animation.gif',
+		'view/images/sphere_animation.gif'
+	];
+
+	// Get current index from sessionStorage or default to 1 (boxes - current default)
+	var currentIndex = parseInt(sessionStorage.getItem('jumbotronBgIndex') || '1');
+
+	// Ensure index is valid
+	if(currentIndex < 0 || currentIndex >= backgrounds.length)
+	{
+		currentIndex = 1;
+	}
+
+	// Add click handler to jumbotron
+	$('.jumbotron').on('click', function(e)
+	{
+		// Don't trigger if clicking the scroll-down arrow
+		if($(e.target).closest('.scroll-down').length > 0)
+		{
+			return;
+		}
+
+		// Increment index (cycle through)
+		currentIndex = (currentIndex + 1) % backgrounds.length;
+
+		// Save to sessionStorage
+		sessionStorage.setItem('jumbotronBgIndex', currentIndex);
+
+		// Get new background
+		var newBackground = backgrounds[currentIndex];
+
+		// Preload the image
+		var img = new Image();
+		img.src = newBackground;
+
+		// Add fade effect
+		var jumbotron = $(this);
+		jumbotron.addClass('bg-transitioning');
+
+		// Once loaded, apply with smooth transition
+		img.onload = function()
+		{
+			setTimeout(function()
+			{
+				jumbotron.css('background-image', 'url("'+ newBackground +'")');
+
+				setTimeout(function()
+				{
+					jumbotron.removeClass('bg-transitioning');
+				}, 300);
+			}, 150);
+		};
+	});
+
+	// Add cursor pointer to indicate it's clickable
+	$('.jumbotron').css('cursor', 'pointer');
+}

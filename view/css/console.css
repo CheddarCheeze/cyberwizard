@@ -1,0 +1,685 @@
+/* ===================================================
+   Cheddar Interactive Console Styles
+   =================================================== */
+
+/* === Console Overlay === */
+.cheddar-console {
+  position: fixed;
+  inset: 0;
+  display: none;
+  background: rgba(5, 10, 20, 0.92);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: #cde3ff;
+  font: 14px/1.5 ui-monospace, SFMono-Regular, Menlo, Consolas, 'Courier New', monospace;
+  z-index: 9999;
+  padding: 16px;
+  box-sizing: border-box;
+  animation: fadeIn 0.2s ease-out;
+}
+
+.cheddar-console.show {
+  display: grid;
+  grid-template-rows: auto 1fr auto auto;
+  gap: 8px;
+}
+
+/* === Title Bar === */
+.cheddar-console__title {
+  color: #8bdcff;
+  letter-spacing: 0.3px;
+  font-weight: 600;
+  text-shadow: 0 0 10px rgba(139, 220, 255, 0.5);
+}
+
+.cheddar-console__badge {
+  color: #94a3b8;
+  font-size: 12px;
+  font-weight: 400;
+}
+
+/* === Output Area === */
+.cheddar-console__out {
+  border: 1px solid #1e2a3b;
+  border-radius: 8px;
+  padding: 12px;
+  overflow: auto;
+  background: radial-gradient(800px 500px at 20% 0%, #0a162e 0%, #060b17 60%);
+  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.5);
+  scrollbar-width: thin;
+  scrollbar-color: #22d3ee #0a162e;
+}
+
+.cheddar-console__out::-webkit-scrollbar {
+  width: 8px;
+}
+
+.cheddar-console__out::-webkit-scrollbar-track {
+  background: #0a162e;
+}
+
+.cheddar-console__out::-webkit-scrollbar-thumb {
+  background: #22d3ee;
+  border-radius: 4px;
+}
+
+.cheddar-console__out::-webkit-scrollbar-thumb:hover {
+  background: #3b82f6;
+}
+
+.cheddar-console__line {
+  white-space: pre-wrap;
+  word-break: break-word;
+  margin: 0;
+  line-height: 1.6;
+  animation: slideInLeft 0.15s ease-out;
+}
+
+.cheddar-console__user {
+  color: #22d3ee;
+  font-weight: 600;
+}
+
+/* === Input Prompt === */
+.cheddar-console__prompt {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(30, 42, 59, 0.5);
+  border: 1px solid #1e2a3b;
+  border-radius: 6px;
+  padding: 4px 8px;
+  transition: border-color 0.2s;
+}
+
+.cheddar-console__prompt:focus-within {
+  border-color: #22d3ee;
+  box-shadow: 0 0 10px rgba(34, 211, 238, 0.3);
+}
+
+.cheddar-console__caret {
+  color: #22d3ee;
+  font-weight: bold;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+.cheddar-console__input {
+  flex: 1;
+  background: transparent;
+  color: #cde3ff;
+  border: none;
+  outline: none;
+  font: inherit;
+  padding: 6px 4px;
+}
+
+.cheddar-console__input::placeholder {
+  color: #475569;
+  opacity: 0.7;
+}
+
+/* === Hints === */
+.cheddar-console__hint {
+  color: #6aa9ff;
+  opacity: 0.75;
+  font-size: 12px;
+  padding: 4px 0;
+}
+
+.cheddar-console__hint code {
+  background: rgba(34, 211, 238, 0.1);
+  padding: 2px 6px;
+  border-radius: 3px;
+  color: #22d3ee;
+  font-family: inherit;
+}
+
+.cheddar-console__cmd-hint {
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: 1px solid transparent;
+}
+
+.cheddar-console__cmd-hint:hover {
+  background: rgba(34, 211, 238, 0.25);
+  border-color: rgba(34, 211, 238, 0.5);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(34, 211, 238, 0.3);
+}
+
+/* === ASCII Art === */
+.cheddar-console__ascii {
+  font-size: 6px;
+  line-height: 9px;
+  white-space: pre;
+  color: #22d3ee;
+  text-shadow: 0 0 5px rgba(34, 211, 238, 0.5);
+  letter-spacing: 0;
+}
+
+@media (max-width: 600px) {
+  .cheddar-console__ascii {
+    font-size: 4px;
+    line-height: 5px;
+  }
+}
+
+/* === Toggle Button === */
+.cheddar-console-toggle {
+  position: fixed;
+  right: 14px;
+  bottom: 14px;
+  z-index: 2147483647;
+  border: 1px solid #1e2a3b;
+  background: #0b1222;
+  color: #cde3ff;
+  border-radius: 10px;
+  padding: 8px 12px;
+  font: 12px ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.cheddar-console-toggle:hover {
+  background: #22d3ee;
+  color: #0b1222;
+  border-color: #22d3ee;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(34, 211, 238, 0.4);
+}
+
+.cheddar-console-toggle:active {
+  transform: translateY(0);
+}
+
+/* === Animations === */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.4;
+  }
+}
+
+/* === Mobile Adjustments === */
+@media (max-width: 768px) {
+  .cheddar-console {
+    padding: 12px;
+  }
+
+  .cheddar-console__out {
+    font-size: 13px;
+  }
+
+  .cheddar-console-toggle {
+    right: 10px;
+    bottom: 10px;
+    padding: 6px 10px;
+    font-size: 11px;
+  }
+}
+
+/* === Accessibility === */
+@media (prefers-reduced-motion: reduce) {
+  .cheddar-console,
+  .cheddar-console__line,
+  .cheddar-console__caret,
+  .cheddar-console-toggle {
+    animation: none;
+    transition: none;
+  }
+}
+
+/* === Code Blocks in Output === */
+.cheddar-console__line code {
+  background: rgba(34, 211, 238, 0.15);
+  padding: 1px 4px;
+  border-radius: 3px;
+  color: #22d3ee;
+  font-family: inherit;
+}
+
+.cheddar-console__line b,
+.cheddar-console__line strong {
+  color: #8bdcff;
+  font-weight: 600;
+}
+
+.cheddar-console__line a {
+  color: #3b82f6;
+  text-decoration: underline;
+}
+
+.cheddar-console__line a:hover {
+  color: #22d3ee;
+}
+
+/* ===================================================
+   Screen Pet (Kairi) Styles
+   =================================================== */
+
+.screen-pet {
+  position: fixed;
+  z-index: 2147483647;
+  cursor: grab;
+  user-select: none;
+  transition: opacity 0.5s ease;
+  width: 100px;
+  height: 120px;
+  pointer-events: auto;
+}
+
+.screen-pet.pet-leaving {
+  opacity: 0;
+  transform: scale(0.5);
+}
+
+.pet-body {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+  animation: petBounce 2s ease-in-out infinite;
+}
+
+/* Head */
+.pet-head {
+  position: relative;
+  width: 50px;
+  height: 50px;
+  background: var(--kairi-color-main, #ffffff);
+  border: 3px solid var(--kairi-color-outline, #333);
+  border-radius: 50% 50% 45% 45%;
+  z-index: 2;
+  box-shadow: inset 0 -5px 10px var(--kairi-color-shadow, rgba(200, 200, 200, 0.3));
+}
+
+/* Ears */
+.pet-ear-left,
+.pet-ear-right {
+  position: absolute;
+  width: 20px;
+  height: 25px;
+  background: var(--kairi-color-main, #ffffff);
+  border: 3px solid var(--kairi-color-outline, #333);
+  border-radius: 50% 50% 30% 30%;
+  top: -3px;
+  z-index: 0;
+}
+
+.pet-ear-left {
+  left: 15px;
+  transform: rotate(-20deg);
+}
+
+.pet-ear-right {
+  right: 15px;
+  transform: rotate(20deg);
+}
+
+/* Eyes */
+.pet-eyes {
+  position: absolute;
+  top: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 12px;
+}
+
+.pet-eye-left,
+.pet-eye-right {
+  width: 8px;
+  height: 8px;
+  background: var(--kairi-color-eyes, #333);
+  border-radius: 50%;
+  animation: petBlink 4s ease-in-out infinite;
+}
+
+/* Snout */
+.pet-snout {
+  position: absolute;
+  bottom: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 28px;
+  height: 22px;
+}
+
+.snout-muzzle {
+  position: absolute;
+  width: 28px;
+  height: 18px;
+  background: var(--kairi-color-snout, #ffffff);
+  border: 3px solid var(--kairi-color-outline, #333);
+  border-radius: 50% 50% 50% 50% / 60% 60% 70% 70%;
+  bottom: 0;
+  left: 0;
+  box-shadow: inset 0 -2px 4px var(--kairi-color-shadow, rgba(200, 200, 200, 0.4));
+}
+
+.pet-nose {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 8px;
+  height: 7px;
+  background: var(--kairi-color-nose, #333);
+  border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%;
+  z-index: 2;
+}
+
+.pet-mouth {
+  position: absolute;
+  bottom: 2px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  height: 6px;
+  background: var(--kairi-color-outline, #333);
+  border-radius: 0 0 2px 2px;
+}
+
+/* Torso */
+.pet-torso {
+  position: relative;
+  width: 40px;
+  height: 35px;
+  background: var(--kairi-color-main, #ffffff);
+  border: 3px solid var(--kairi-color-outline, #333);
+  border-radius: 40% 40% 50% 50%;
+  margin-top: -8px;
+  box-shadow: inset 0 -5px 10px var(--kairi-color-shadow, rgba(200, 200, 200, 0.3));
+}
+
+/* Legs */
+.pet-legs {
+  position: absolute;
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 18px;
+}
+
+.pet-leg {
+  position: absolute;
+  width: 10px;
+  height: 18px;
+  background: var(--kairi-color-main, #ffffff);
+  border: 3px solid var(--kairi-color-outline, #333);
+  border-radius: 0 0 40% 40%;
+}
+
+.pet-leg-back-left {
+  left: 0;
+  opacity: 0.8;
+  z-index: 1;
+}
+
+.pet-leg-back-right {
+  right: 0;
+  opacity: 0.8;
+  z-index: 1;
+}
+
+.pet-leg-front-left {
+  left: 5px;
+  z-index: 2;
+}
+
+.pet-leg-front-right {
+  right: 5px;
+  z-index: 2;
+}
+
+/* Tail */
+.pet-tail {
+  position: absolute;
+  right: 0px;
+  top: 42px;
+  width: 45px;
+  height: 30px;
+  animation: petTailWag 1s ease-in-out infinite;
+  transform-origin: 0px center;
+  z-index: -1;
+}
+
+.tail-fluff {
+  position: absolute;
+  background: var(--kairi-color-main, #ffffff);
+  border: 3px solid var(--kairi-color-outline, #333);
+  border-radius: 50%;
+}
+
+.tail-base {
+  width: 16px;
+  height: 16px;
+  left: 0;
+  top: 14px;
+  z-index: 1;
+}
+
+.tail-mid1 {
+  width: 18px;
+  height: 18px;
+  left: 10px;
+  top: 10px;
+  z-index: 2;
+}
+
+.tail-mid2 {
+  width: 20px;
+  height: 20px;
+  left: 18px;
+  top: 6px;
+  z-index: 3;
+}
+
+.tail-mid3 {
+  width: 18px;
+  height: 18px;
+  left: 26px;
+  top: 4px;
+  z-index: 4;
+}
+
+.tail-tip {
+  width: 22px;
+  height: 22px;
+  right: 0;
+  top: 2px;
+  z-index: 5;
+  box-shadow: inset -2px -2px 5px rgba(200, 200, 200, 0.4);
+}
+
+/* Pet Controls */
+.pet-controls {
+  position: absolute;
+  bottom: -45px;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  white-space: nowrap;
+}
+
+.screen-pet:hover .pet-controls {
+  opacity: 1;
+}
+
+.pet-btn {
+  background: #22A39F;
+  color: white;
+  border: 2px solid #1a7f7c;
+  border-radius: 6px;
+  padding: 6px 12px;
+  font-size: 12px;
+  font-family: 'Open Sans', sans-serif;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.pet-btn:hover {
+  background: #1a7f7c;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.pet-btn:active {
+  transform: translateY(0);
+}
+
+/* Animations */
+@keyframes petBounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes petBlink {
+  0%, 48%, 52%, 100% {
+    height: 8px;
+  }
+  50% {
+    height: 2px;
+  }
+}
+
+@keyframes petTailWag {
+  0%, 100% {
+    transform: rotate(-25deg);
+  }
+  50% {
+    transform: rotate(5deg);
+  }
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  .screen-pet {
+    transform: scale(0.8);
+  }
+
+  .pet-controls {
+    bottom: -50px;
+  }
+}
+
+/* ===================================================
+   Kairi Look Themes
+   =================================================== */
+
+/* Look 1: Classic White (Default) */
+.screen-pet.kairi-look-classic {
+  --kairi-color-main: #ffffff;
+  --kairi-color-snout: #ffffff;
+  --kairi-color-outline: #333;
+  --kairi-color-eyes: #333;
+  --kairi-color-nose: #333;
+  --kairi-color-shadow: rgba(200, 200, 200, 0.3);
+}
+
+/* Look 2: Cream Maltipoo */
+.screen-pet.kairi-look-cream {
+  --kairi-color-main: #f5e6d3;
+  --kairi-color-snout: #faf0e6;
+  --kairi-color-outline: #8b6f47;
+  --kairi-color-eyes: #4a3728;
+  --kairi-color-nose: #8b6f47;
+  --kairi-color-shadow: rgba(139, 111, 71, 0.25);
+}
+
+/* Look 3: Pastel Pink Cutie */
+.screen-pet.kairi-look-pink {
+  --kairi-color-main: #ffd1dc;
+  --kairi-color-snout: #ffe4e9;
+  --kairi-color-outline: #ff69b4;
+  --kairi-color-eyes: #ff1493;
+  --kairi-color-nose: #ff69b4;
+  --kairi-color-shadow: rgba(255, 105, 180, 0.25);
+}
+
+/* Look Toggle Buttons */
+.pet-look-toggle {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 8px;
+}
+
+.pet-look-btn {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 3px solid transparent;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  position: relative;
+}
+
+.pet-look-btn:hover {
+  transform: scale(1.15);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.pet-look-btn.active {
+  border-color: #22A39F;
+  box-shadow: 0 0 0 2px #22A39F, 0 4px 8px rgba(34, 163, 159, 0.4);
+  transform: scale(1.1);
+}
+
+.pet-look-btn.active::after {
+  content: '✓';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #22A39F;
+  font-weight: bold;
+  font-size: 16px;
+  text-shadow: 0 0 3px rgba(255, 255, 255, 0.8);
+}
+
+.pet-look-btn-classic {
+  background: linear-gradient(135deg, #ffffff 0%, #f0f0f0 100%);
+  border-color: #333;
+}
+
+.pet-look-btn-cream {
+  background: linear-gradient(135deg, #f5e6d3 0%, #e6d3bf 100%);
+  border-color: #8b6f47;
+}
+
+.pet-look-btn-pink {
+  background: linear-gradient(135deg, #ffd1dc 0%, #ffb3c6 100%);
+  border-color: #ff69b4;
+}

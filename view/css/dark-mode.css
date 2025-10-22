@@ -1,0 +1,354 @@
+/* ===================================================
+   Dark Mode / Dream Mode Styles
+   =================================================== */
+
+/* === Root Variables for Theme === */
+:root {
+  --bg-primary: #F3EFE0;
+  --bg-secondary: #FFFFFF;
+  --bg-tertiary: #434242;
+  --text-primary: #434242;
+  --text-secondary: #727878;
+  --accent-color: #22A39F;
+  --accent-dark: #1c8784;
+  --border-color: rgba(34, 163, 159, 0.2);
+  --card-bg: rgba(255, 255, 255, 0.05);
+  --shadow-color: rgba(0, 0, 0, 0.1);
+}
+
+/* === Dark Mode Theme === */
+body.dark-mode {
+  --bg-primary: #0f1419;
+  --bg-secondary: #1a1f26;
+  --bg-tertiary: #2d3748;
+  --text-primary: #e2e8f0;
+  --text-secondary: #a0aec0;
+  --accent-color: #22d3ee;
+  --accent-dark: #06b6d4;
+  --border-color: rgba(34, 211, 238, 0.3);
+  --card-bg: rgba(34, 211, 238, 0.08);
+  --shadow-color: rgba(0, 0, 0, 0.5);
+
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background 0.5s ease, color 0.5s ease;
+}
+
+/* === Dream Mode Theme (Purple/Pink tones) === */
+body.dream-mode {
+  --bg-primary: #1a0b2e;
+  --bg-secondary: #2d1b4e;
+  --bg-tertiary: #3d2963;
+  --text-primary: #f0e6ff;
+  --text-secondary: #d4bbff;
+  --accent-color: #a855f7;
+  --accent-dark: #7c3aed;
+  --border-color: rgba(168, 85, 247, 0.3);
+  --card-bg: rgba(168, 85, 247, 0.1);
+  --shadow-color: rgba(168, 85, 247, 0.3);
+
+  background: linear-gradient(135deg, #1a0b2e 0%, #0f0320 100%);
+  color: var(--text-primary);
+  transition: background 0.5s ease, color 0.5s ease;
+}
+
+body.dream-mode::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background:
+    radial-gradient(circle at 20% 50%, rgba(168, 85, 247, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(236, 72, 153, 0.15) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* === Background Overrides === */
+body.dark-mode,
+body.dream-mode {
+  background: var(--bg-primary);
+}
+
+body.dark-mode .background-white,
+body.dream-mode .background-white {
+  background: var(--bg-secondary);
+}
+
+body.dark-mode .background-gray,
+body.dream-mode .background-gray {
+  background: var(--bg-tertiary);
+}
+
+/* === Text Color Overrides === */
+body.dark-mode h1, body.dark-mode h2, body.dark-mode h3,
+body.dark-mode h4, body.dark-mode h5, body.dark-mode h6,
+body.dream-mode h1, body.dream-mode h2, body.dream-mode h3,
+body.dream-mode h4, body.dream-mode h5, body.dream-mode h6 {
+  color: var(--text-primary);
+}
+
+body.dark-mode h2, body.dark-mode h3,
+body.dream-mode h2, body.dream-mode h3 {
+  color: var(--accent-color);
+}
+
+body.dark-mode p, body.dark-mode .lead,
+body.dream-mode p, body.dream-mode .lead {
+  color: var(--text-secondary);
+}
+
+body.dark-mode .skill-title,
+body.dream-mode .skill-title {
+  color: var(--text-primary);
+}
+
+/* === Accent Color Overrides === */
+body.dark-mode .btn-primary,
+body.dream-mode .btn-primary {
+  background-color: var(--accent-color);
+  border-color: var(--accent-dark);
+}
+
+body.dark-mode .btn-primary:hover,
+body.dream-mode .btn-primary:hover {
+  background-color: var(--accent-dark);
+}
+
+/* === Card & Section Styling === */
+body.dark-mode .skill-list li,
+body.dream-mode .skill-list li {
+  background: var(--card-bg);
+  border-color: var(--border-color);
+}
+
+body.dark-mode .skill-list li:hover,
+body.dream-mode .skill-list li:hover {
+  background: var(--card-bg);
+  border-color: var(--accent-color);
+  box-shadow: 0 0 20px var(--shadow-color);
+}
+
+/* === Navigation === */
+body.dark-mode .navbar,
+body.dream-mode .navbar {
+  background-color: var(--bg-secondary) !important;
+}
+
+body.dark-mode .navbar .nav-link,
+body.dream-mode .navbar .nav-link {
+  color: var(--text-primary) !important;
+}
+
+body.dark-mode .navbar .nav-link:hover,
+body.dream-mode .navbar .nav-link:hover {
+  background-color: var(--accent-color) !important;
+}
+
+body.dark-mode .navbar-default .navbar-nav > .active > a,
+body.dream-mode .navbar-default .navbar-nav > .active > a {
+  background: var(--accent-color) !important;
+  color: var(--text-primary) !important;
+}
+
+/* === Jumbotron Overlay === */
+body.dark-mode .jumbotron .overlay,
+body.dream-mode .jumbotron .overlay {
+  background-color: var(--accent-color);
+  opacity: 0.7;
+}
+
+/* === Experience Cards === */
+body.dark-mode #experiences .experience,
+body.dream-mode #experiences .experience {
+  background: var(--card-bg);
+  border-left-color: var(--accent-color);
+}
+
+body.dark-mode #experiences .experience h4,
+body.dream-mode #experiences .experience h4 {
+  color: var(--accent-color);
+}
+
+body.dark-mode #experiences .experience strong,
+body.dream-mode #experiences .experience strong {
+  color: var(--text-primary);
+}
+
+body.dark-mode #experiences .experience-period,
+body.dream-mode #experiences .experience-period {
+  background: var(--card-bg);
+  color: var(--accent-color);
+  border-color: var(--border-color);
+}
+
+body.dark-mode #experiences .experience-details *,
+body.dream-mode #experiences .experience-details * {
+  color: var(--accent-color) !important;
+}
+
+/* === Skill Bars === */
+body.dark-mode .skill-bar::before,
+body.dream-mode .skill-bar::before {
+  background: linear-gradient(90deg, var(--accent-dark) 0%, var(--accent-color) 100%);
+}
+
+body.dark-mode .skill-percent,
+body.dream-mode .skill-percent {
+  color: var(--accent-color);
+}
+
+/* === Contact Cards === */
+body.dark-mode .contact-card,
+body.dream-mode .contact-card {
+  background: var(--card-bg);
+  border-color: var(--border-color);
+}
+
+body.dark-mode .contact-card h4,
+body.dream-mode .contact-card h4 {
+  color: var(--text-primary);
+}
+
+body.dark-mode .contact-card .contact-description,
+body.dream-mode .contact-card .contact-description {
+  color: var(--text-secondary);
+}
+
+body.dark-mode .contact-icon,
+body.dream-mode .contact-icon {
+  background: var(--card-bg);
+}
+
+body.dark-mode .contact-icon i,
+body.dream-mode .contact-icon i {
+  color: var(--accent-color);
+}
+
+body.dark-mode .contact-card:hover .contact-icon,
+body.dream-mode .contact-card:hover .contact-icon {
+  background: var(--accent-color);
+}
+
+body.dark-mode .contact-cta,
+body.dream-mode .contact-cta {
+  color: var(--accent-color);
+}
+
+/* === Links === */
+body.dark-mode a,
+body.dream-mode a {
+  color: var(--accent-color);
+}
+
+body.dark-mode a:hover,
+body.dream-mode a:hover {
+  color: var(--accent-dark);
+}
+
+/* === HR === */
+body.dark-mode hr,
+body.dream-mode hr {
+  border-color: var(--border-color);
+}
+
+/* === Scroll Down Arrow === */
+body.dark-mode .scroll-down,
+body.dream-mode .scroll-down {
+  background-color: var(--bg-secondary);
+}
+
+body.dark-mode .scroll-down .bi,
+body.dream-mode .scroll-down .bi {
+  color: var(--accent-color);
+}
+
+/* === Dream Mode Specific Effects === */
+body.dream-mode * {
+  animation-duration: 1.2s !important; /* Slow down all animations for dreamy effect */
+}
+
+body.dream-mode .skill-list li,
+body.dream-mode #experiences .experience {
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+/* === Floating Stars for Dream Mode === */
+body.dream-mode::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image:
+    radial-gradient(2px 2px at 20% 30%, white, transparent),
+    radial-gradient(2px 2px at 60% 70%, white, transparent),
+    radial-gradient(1px 1px at 50% 50%, white, transparent),
+    radial-gradient(1px 1px at 80% 10%, white, transparent),
+    radial-gradient(2px 2px at 90% 60%, white, transparent),
+    radial-gradient(1px 1px at 33% 80%, white, transparent);
+  background-size: 200% 200%;
+  background-position: 0% 0%;
+  animation: dream-stars 60s linear infinite;
+  pointer-events: none;
+  opacity: 0.4;
+  z-index: 1;
+}
+
+@keyframes dream-stars {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 100% 100%;
+  }
+}
+
+/* === Mode Toggle Notification === */
+.mode-toggle-notification {
+  position: fixed;
+  top: 80px;
+  right: 20px;
+  background: linear-gradient(135deg, var(--accent-color), var(--accent-dark));
+  color: white;
+  padding: 20px 30px;
+  border-radius: 12px;
+  box-shadow: 0 10px 40px var(--shadow-color);
+  z-index: 10000;
+  font-weight: bold;
+  animation: slideInRight 0.5s ease-out, fadeOut 0.5s ease-out 2.5s forwards;
+  pointer-events: none;
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+}
+
+/* === Ensure smooth transitions === */
+body,
+.background-white,
+.background-gray,
+.navbar,
+.skill-list li,
+#experiences .experience,
+.contact-card {
+  transition: background 0.5s ease, color 0.5s ease, border-color 0.5s ease;
+}

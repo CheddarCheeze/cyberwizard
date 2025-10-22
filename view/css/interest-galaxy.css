@@ -1,0 +1,866 @@
+/* Interest Galaxy Visualization */
+#interest-galaxy-container {
+    position: relative;
+    width: 100%;
+    min-height: 700px;
+    background: linear-gradient(135deg, #1a1a2e 0%, #0f0f1e 100%);
+    border-radius: 15px;
+    overflow: hidden;
+    margin: 40px 0;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+#interest-galaxy {
+    width: 100%;
+    height: 700px;
+    position: relative;
+}
+
+/* Starfield background effect */
+.galaxy-stars {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.galaxy-star {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: white;
+    border-radius: 50%;
+    opacity: 0.3;
+    animation: twinkle 3s infinite;
+}
+
+@keyframes twinkle {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 0.8; }
+}
+
+/* Interest Nodes */
+.interest-node {
+    position: absolute;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 20;
+}
+
+.interest-node-inner {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #22A39F 0%, #1c8784 100%);
+    box-shadow: 0 4px 15px rgba(34, 163, 159, 0.4);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 8px;
+    border: 3px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+/* Color variations for different importance levels */
+.interest-node.color-primary .interest-node-inner {
+    background: linear-gradient(135deg, #22A39F 0%, #1c8784 100%);
+    box-shadow: 0 6px 25px rgba(34, 163, 159, 0.6);
+    border: 3px solid rgba(34, 163, 159, 0.3);
+}
+
+.interest-node.color-secondary .interest-node-inner {
+    background: linear-gradient(135deg, #8B5CF6 0%, #7C3AED 100%);
+    box-shadow: 0 5px 20px rgba(139, 92, 246, 0.5);
+    border: 3px solid rgba(139, 92, 246, 0.3);
+}
+
+.interest-node.color-tertiary .interest-node-inner {
+    background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
+    box-shadow: 0 4px 15px rgba(245, 158, 11, 0.4);
+    border: 3px solid rgba(245, 158, 11, 0.3);
+}
+
+/* Different sizes for different node importance - scaled for large screens */
+.interest-node.size-primary {
+    width: 120px;
+    height: 120px;
+}
+
+.interest-node.size-secondary {
+    width: 90px;
+    height: 90px;
+}
+
+.interest-node.size-tertiary {
+    width: 70px;
+    height: 70px;
+}
+
+/* Node icon styling */
+.interest-node-icon {
+    font-size: 1.6rem;
+    color: white;
+    margin-bottom: 3px;
+    transition: transform 0.3s ease;
+    flex-shrink: 0;
+}
+
+.interest-node.size-secondary .interest-node-icon {
+    font-size: 1.3rem;
+    margin-bottom: 2px;
+}
+
+.interest-node.size-tertiary .interest-node-icon {
+    font-size: 1.1rem;
+    margin-bottom: 2px;
+}
+
+.interest-node-label {
+    color: white;
+    font-size: 10px;
+    font-weight: 600;
+    text-align: center;
+    line-height: 1.1;
+    max-width: 100%;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    display: block;
+}
+
+.interest-node.size-primary .interest-node-label {
+    font-size: 11px;
+    line-height: 1.15;
+}
+
+.interest-node.size-secondary .interest-node-label {
+    font-size: 9px;
+}
+
+.interest-node.size-tertiary .interest-node-label {
+    font-size: 8px;
+}
+
+/* Hover effects with color-specific glow */
+.interest-node:hover {
+    transform: scale(1.15);
+    z-index: 200;
+}
+
+/* Active node should be behind the detail panel */
+.interest-node.active {
+    z-index: 10;
+}
+
+.interest-node.color-primary:hover .interest-node-inner {
+    background: linear-gradient(135deg, #2bc4be 0%, #22A39F 100%);
+    box-shadow: 0 10px 40px rgba(34, 163, 159, 0.8);
+    border-color: rgba(255, 255, 255, 0.7);
+}
+
+.interest-node.color-secondary:hover .interest-node-inner {
+    background: linear-gradient(135deg, #A78BFA 0%, #8B5CF6 100%);
+    box-shadow: 0 8px 35px rgba(139, 92, 246, 0.8);
+    border-color: rgba(255, 255, 255, 0.7);
+}
+
+.interest-node.color-tertiary:hover .interest-node-inner {
+    background: linear-gradient(135deg, #FBBF24 0%, #F59E0B 100%);
+    box-shadow: 0 6px 30px rgba(245, 158, 11, 0.8);
+    border-color: rgba(255, 255, 255, 0.7);
+}
+
+.interest-node:hover .interest-node-inner {
+    border-color: rgba(255, 255, 255, 0.6);
+}
+
+.interest-node:hover .interest-node-icon {
+    transform: scale(1.2) rotate(5deg);
+}
+
+/* Active/Selected state - adapt to node color */
+.interest-node.active .interest-node-inner {
+    background: linear-gradient(135deg, #fff 0%, #f0f0f0 100%);
+    box-shadow: 0 8px 30px rgba(255, 255, 255, 0.5);
+}
+
+.interest-node.color-primary.active .interest-node-inner {
+    border-color: #22A39F;
+}
+
+.interest-node.color-secondary.active .interest-node-inner {
+    border-color: #8B5CF6;
+}
+
+.interest-node.color-tertiary.active .interest-node-inner {
+    border-color: #F59E0B;
+}
+
+.interest-node.color-primary.active .interest-node-icon,
+.interest-node.color-primary.active .interest-node-label {
+    color: #22A39F;
+}
+
+.interest-node.color-secondary.active .interest-node-icon,
+.interest-node.color-secondary.active .interest-node-label {
+    color: #8B5CF6;
+}
+
+.interest-node.color-tertiary.active .interest-node-icon,
+.interest-node.color-tertiary.active .interest-node-label {
+    color: #F59E0B;
+}
+
+/* Connection Lines (SVG) */
+#interest-connections {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.connection-line {
+    stroke: rgba(34, 163, 159, 0.3);
+    stroke-width: 2;
+    fill: none;
+    transition: all 0.3s ease;
+}
+
+.connection-line.highlighted {
+    stroke: rgba(34, 163, 159, 0.8);
+    stroke-width: 3;
+    filter: drop-shadow(0 0 8px rgba(34, 163, 159, 0.6));
+}
+
+/* Detail Panel */
+#interest-detail-panel {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(255, 255, 255, 0.98);
+    border-radius: 15px 15px 0 0;
+    box-shadow: 0 -5px 30px rgba(0, 0, 0, 0.3);
+    transform: translateY(100%);
+    transition: transform 0.4s ease;
+    z-index: 50;
+    max-height: 60%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+#interest-detail-panel.visible {
+    transform: translateY(0);
+}
+
+.detail-content-wrapper {
+    overflow-y: auto;
+    padding: 30px;
+    padding-top: 50px;
+    flex: 1;
+}
+
+.detail-close {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    background: rgba(255, 255, 255, 0.95);
+    border: 2px solid #e0e0e0;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    font-size: 24px;
+    line-height: 32px;
+    text-align: center;
+    color: #666;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 100;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.detail-close:hover {
+    color: #22A39F;
+    border-color: #22A39F;
+    background: white;
+    transform: scale(1.1);
+}
+
+.detail-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.detail-icon {
+    font-size: 3rem;
+    color: #22A39F;
+    margin-right: 20px;
+}
+
+.detail-title {
+    font-size: 28px;
+    color: #22A39F;
+    margin: 0;
+    font-weight: 300;
+}
+
+.detail-content {
+    color: #434242;
+    line-height: 1.64;
+}
+
+.detail-stats {
+    display: flex;
+    gap: 20px;
+    margin: 20px 0;
+    flex-wrap: wrap;
+}
+
+.detail-stat {
+    background: #F3EFE0;
+    padding: 10px 20px;
+    border-radius: 8px;
+    border-left: 3px solid #22A39F;
+}
+
+.detail-stat-label {
+    font-size: 11px;
+    color: #727878;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.detail-stat-value {
+    font-size: 18px;
+    color: #22A39F;
+    font-weight: 700;
+}
+
+.detail-connections {
+    margin-top: 20px;
+}
+
+.detail-connections h4 {
+    font-size: 16px;
+    color: #727878;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.connection-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.connection-tag {
+    background: #22A39F;
+    color: white;
+    padding: 6px 15px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+    white-space: nowrap;
+}
+
+.connection-tag:hover {
+    background: #1c8784;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(34, 163, 159, 0.3);
+}
+
+.detail-connections .connection-tag.skill-tag {
+    background: linear-gradient(135deg, #8B5CF6 0%, #7C3AED 100%);
+    border: 1px solid rgba(139, 92, 246, 0.3);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    position: relative;
+    color: white;
+}
+
+.detail-connections .connection-tag.skill-tag:hover {
+    background: linear-gradient(135deg, #A78BFA 0%, #8B5CF6 100%);
+    box-shadow: 0 4px 15px rgba(139, 92, 246, 0.5);
+    transform: translateY(-3px) scale(1.05);
+}
+
+.detail-connections .connection-tag.skill-tag i {
+    font-size: 10px;
+}
+
+.related-skills-section {
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid rgba(34, 163, 159, 0.2);
+}
+
+.related-skills-section h4 {
+    color: #8B5CF6;
+}
+
+/* Instructions overlay */
+.galaxy-instructions {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 15px 20px;
+    border-radius: 10px;
+    color: #434242;
+    font-size: 13px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    z-index: 15;
+    max-width: 250px;
+    transition: opacity 0.3s ease;
+}
+
+.galaxy-instructions.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.galaxy-instructions i {
+    color: #22A39F;
+    margin-right: 8px;
+}
+
+.galaxy-instructions p {
+    margin: 8px 0;
+    line-height: 1.4;
+}
+
+/* Legend */
+.galaxy-legend {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    z-index: 15;
+}
+
+.galaxy-legend h4 {
+    font-size: 14px;
+    color: #22A39F;
+    margin: 0 0 10px 0;
+    font-weight: 600;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    margin: 8px 0;
+    font-size: 12px;
+    color: #434242;
+}
+
+.legend-circle {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    margin-right: 10px;
+    background: #22A39F;
+    box-shadow: 0 2px 8px rgba(34, 163, 159, 0.4);
+}
+
+.legend-circle.primary {
+    width: 28px;
+    height: 28px;
+    background: linear-gradient(135deg, #22A39F 0%, #1c8784 100%);
+    box-shadow: 0 3px 12px rgba(34, 163, 159, 0.6);
+}
+
+.legend-circle.secondary {
+    width: 20px;
+    height: 20px;
+    background: linear-gradient(135deg, #8B5CF6 0%, #7C3AED 100%);
+    box-shadow: 0 2px 10px rgba(139, 92, 246, 0.5);
+}
+
+.legend-circle.tertiary {
+    width: 16px;
+    height: 16px;
+    background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
+    box-shadow: 0 2px 8px rgba(245, 158, 11, 0.4);
+}
+
+/* Responsive Design - Tablet (768px - 1024px) */
+@media (max-width: 1024px) and (min-width: 768px) {
+    #interest-galaxy-container {
+        min-height: 650px;
+    }
+
+    #interest-galaxy {
+        height: 650px;
+    }
+
+    /* Medium nodes for tablets - icon only, no text */
+    .interest-node.size-primary {
+        width: 85px;
+        height: 85px;
+    }
+
+    .interest-node.size-secondary {
+        width: 65px;
+        height: 65px;
+    }
+
+    .interest-node.size-tertiary {
+        width: 50px;
+        height: 50px;
+    }
+
+    .interest-node-icon {
+        font-size: 2rem;
+        margin-bottom: 0;
+    }
+
+    .interest-node.size-secondary .interest-node-icon {
+        font-size: 1.5rem;
+    }
+
+    .interest-node.size-tertiary .interest-node-icon {
+        font-size: 1.2rem;
+    }
+
+    .interest-node-inner {
+        padding: 6px;
+        border: 2px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .interest-node.color-primary .interest-node-inner,
+    .interest-node.color-secondary .interest-node-inner,
+    .interest-node.color-tertiary .interest-node-inner {
+        border-width: 2px;
+    }
+
+    /* Hide text labels on tablet - icon only */
+    .interest-node-label {
+        display: none;
+    }
+
+    .galaxy-legend {
+        opacity: 0.95;
+    }
+}
+
+/* Responsive Design - Mobile (under 768px) */
+@media (max-width: 767px) {
+    #interest-galaxy-container {
+        min-height: 600px;
+        touch-action: pan-x pan-y;
+    }
+
+    #interest-galaxy {
+        height: 600px;
+        width: 100%;
+        position: relative;
+        /* Enable scrolling if needed */
+        overflow: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    /* Smaller nodes for mobile - icon only, no text */
+    .interest-node.size-primary {
+        width: 60px;
+        height: 60px;
+    }
+
+    .interest-node.size-secondary {
+        width: 48px;
+        height: 48px;
+    }
+
+    .interest-node.size-tertiary {
+        width: 38px;
+        height: 38px;
+    }
+
+    .interest-node-icon {
+        font-size: 1.5rem;
+        margin-bottom: 0;
+    }
+
+    .interest-node.size-secondary .interest-node-icon {
+        font-size: 1.2rem;
+    }
+
+    .interest-node.size-tertiary .interest-node-icon {
+        font-size: 1rem;
+    }
+
+    .interest-node-inner {
+        padding: 5px;
+        border: 2px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .interest-node.color-primary .interest-node-inner,
+    .interest-node.color-secondary .interest-node-inner,
+    .interest-node.color-tertiary .interest-node-inner {
+        border-width: 2px;
+    }
+
+    /* Hide text labels on mobile - icon only */
+    .interest-node-label {
+        display: none;
+    }
+
+    /* Hide instructions and legend on mobile initially */
+    .galaxy-instructions {
+        display: none;
+    }
+
+    .galaxy-legend {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        padding: 8px 12px;
+        font-size: 11px;
+        opacity: 0.9;
+    }
+
+    .galaxy-legend h4 {
+        font-size: 12px;
+        margin-bottom: 6px;
+    }
+
+    .legend-item {
+        margin: 4px 0;
+        font-size: 10px;
+    }
+
+    .legend-circle.primary {
+        width: 22px;
+        height: 22px;
+    }
+
+    .legend-circle.secondary {
+        width: 16px;
+        height: 16px;
+    }
+
+    .legend-circle.tertiary {
+        width: 12px;
+        height: 12px;
+    }
+
+    /* Detail panel optimization for mobile */
+    #interest-detail-panel {
+        max-height: 65%;
+        border-radius: 12px 12px 0 0;
+    }
+
+    .detail-content-wrapper {
+        padding: 15px;
+        padding-top: 45px;
+    }
+
+    .detail-close {
+        top: 10px;
+        right: 15px;
+        width: 32px;
+        height: 32px;
+        font-size: 20px;
+        line-height: 28px;
+    }
+
+    .detail-icon {
+        font-size: 2rem;
+        margin-right: 15px;
+    }
+
+    .detail-title {
+        font-size: 18px;
+    }
+
+    .detail-content {
+        font-size: 14px;
+    }
+
+    .detail-stats {
+        gap: 10px;
+    }
+
+    .detail-stat {
+        padding: 8px 15px;
+        flex: 1 1 calc(50% - 10px);
+        min-width: 120px;
+    }
+
+    .detail-stat-label {
+        font-size: 10px;
+    }
+
+    .detail-stat-value {
+        font-size: 15px;
+    }
+
+    .connection-tag {
+        font-size: 11px;
+        padding: 5px 12px;
+    }
+
+    /* Mobile hint overlay */
+    .mobile-hint {
+        position: absolute;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: rgba(34, 163, 159, 0.95);
+        color: white;
+        padding: 8px 16px;
+        border-radius: 20px;
+        font-size: 12px;
+        z-index: 10;
+        animation: fadeInOut 3s ease-in-out;
+        pointer-events: none;
+    }
+
+    @keyframes fadeInOut {
+        0%, 100% { opacity: 0; }
+        10%, 90% { opacity: 1; }
+    }
+}
+
+/* Responsive Design - Very Small Mobile (under 400px) */
+@media (max-width: 400px) {
+    #interest-galaxy-container {
+        min-height: 550px;
+    }
+
+    #interest-galaxy {
+        height: 550px;
+    }
+
+    /* Even smaller nodes for very small screens to prevent overlap */
+    .interest-node.size-primary {
+        width: 52px;
+        height: 52px;
+    }
+
+    .interest-node.size-secondary {
+        width: 42px;
+        height: 42px;
+    }
+
+    .interest-node.size-tertiary {
+        width: 34px;
+        height: 34px;
+    }
+
+    .interest-node-icon {
+        font-size: 1.3rem;
+    }
+
+    .interest-node.size-secondary .interest-node-icon {
+        font-size: 1.1rem;
+    }
+
+    .interest-node.size-tertiary .interest-node-icon {
+        font-size: 0.9rem;
+    }
+
+    .interest-node-inner {
+        padding: 4px;
+    }
+
+    /* Adjust legend for very small screens */
+    .galaxy-legend {
+        padding: 6px 10px;
+        font-size: 10px;
+    }
+
+    .galaxy-legend h4 {
+        font-size: 11px;
+        margin-bottom: 5px;
+    }
+
+    .legend-item {
+        margin: 3px 0;
+        font-size: 9px;
+    }
+
+    .legend-circle.primary {
+        width: 18px;
+        height: 18px;
+    }
+
+    .legend-circle.secondary {
+        width: 14px;
+        height: 14px;
+    }
+
+    .legend-circle.tertiary {
+        width: 11px;
+        height: 11px;
+    }
+
+    /* Make detail panel take up more space on very small screens */
+    #interest-detail-panel {
+        max-height: 70%;
+    }
+
+    .detail-content-wrapper {
+        padding: 12px;
+        padding-top: 40px;
+    }
+
+    .detail-icon {
+        font-size: 1.6rem;
+        margin-right: 12px;
+    }
+
+    .detail-title {
+        font-size: 16px;
+    }
+
+    .detail-content {
+        font-size: 13px;
+        line-height: 1.5;
+    }
+
+    .connection-tag {
+        font-size: 10px;
+        padding: 4px 10px;
+    }
+}
+
+/* Animations for initial load */
+@keyframes nodeAppear {
+    from {
+        opacity: 0;
+        transform: scale(0);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.interest-node {
+    animation: nodeAppear 0.5s ease backwards;
+}
+
+.interest-node:nth-child(1) { animation-delay: 0.1s; }
+.interest-node:nth-child(2) { animation-delay: 0.2s; }
+.interest-node:nth-child(3) { animation-delay: 0.3s; }
+.interest-node:nth-child(4) { animation-delay: 0.4s; }
+.interest-node:nth-child(5) { animation-delay: 0.5s; }
+.interest-node:nth-child(6) { animation-delay: 0.6s; }
+.interest-node:nth-child(7) { animation-delay: 0.7s; }
+.interest-node:nth-child(8) { animation-delay: 0.8s; }
+.interest-node:nth-child(9) { animation-delay: 0.9s; }

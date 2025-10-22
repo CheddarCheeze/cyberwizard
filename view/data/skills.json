@@ -1,0 +1,50 @@
+{
+  "skills": [
+    { "name": "C#", "rating": 5 },
+    { "name": "HTML", "rating": 5 },
+    { "name": "PHP", "rating": 5 },
+    { "name": "Agile Development", "rating": 5 },
+    { "name": "Artificial Intelligence / LLM Integration", "rating": 5 },
+    { "name": "Machine Learning", "rating": 5 },
+    { "name": "Automation", "rating": 5 },
+    { "name": "Python", "rating": 5 },
+    { "name": "Project Architecture", "rating": 4 },
+    { "name": "Data Science / Data Visualization", "rating": 4 },
+    { "name": "Object Oriented Programming", "rating": 4 },
+    { "name": "Java", "rating": 4 },
+    { "name": "SQL", "rating": 4 },
+    { "name": "Computer Networking", "rating": 4 },
+    { "name": "Command Line / Bash / Powershell", "rating": 4 },
+    { "name": "Web Development", "rating": 4 },
+    { "name": "JavaScript", "rating": 4 },
+    { "name": "Bootstrap Framework", "rating": 4 },
+    { "name": "Public Relations", "rating": 4 },
+    { "name": "JSON", "rating": 4 },
+    { "name": "XML", "rating": 4 },
+    { "name": "MVVM Pattern", "rating": 4 },
+    { "name": "Mobile Development", "rating": 3 },
+    { "name": "C++", "rating": 3 },
+    { "name": "MVC Pattern", "rating": 3 },
+    { "name": "CSS", "rating": 3 }
+  ],
+  "languages": [
+    { "name": "English (Daily use)", "rating": 5 },
+    { "name": "Spanish (Mother tongue)", "rating": 3 }
+  ],
+  "tools": [
+    { "name": "Windows (10+ years)", "rating": 5 },
+    { "name": "MS Office (10+ years)", "rating": 5 },
+    { "name": "Google Chrome (10+ years)", "rating": 5 },
+    { "name": "Sublime Text (10+ years)", "rating": 5 },
+    { "name": "Notepad++ (10+ years)", "rating": 5 },
+    { "name": "Visual Studio (8+ years)", "rating": 4 },
+    { "name": "Azure Web Services (3+ years)", "rating": 4 },
+    { "name": "Mac (10+ years)", "rating": 4 },
+    { "name": "Linux (8+ years)", "rating": 4 },
+    { "name": "Firefox (8+ years)", "rating": 4 },
+    { "name": "Adobe Photoshop (6+ years)", "rating": 4 },
+    { "name": "Filezilla / FTP (5+ years)", "rating": 4 },
+    { "name": "Wireshark (4+ years)", "rating": 3 },
+    { "name": "Edge (1 years)", "rating": 2 }
+  ]
+}
