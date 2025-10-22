@@ -75,7 +75,7 @@
             <span class="cheddar-console__caret">&gt;</span>
             <input id="cheddarConsoleIn" class="cheddar-console__input" type="text" autocomplete="off" spellcheck="false" placeholder="type 'help' or 'call kairi'">
           </div>
-          <div class="cheddar-console__hint">try: <code class="cheddar-console__cmd-hint">help</code> · <code class="cheddar-console__cmd-hint">skills</code> · <code class="cheddar-console__cmd-hint">projects</code> · <code class="cheddar-console__cmd-hint">call kairi</code> · <code class="cheddar-console__cmd-hint">summon cheddar</code></div>
+          <div class="cheddar-console__hint">try: <code class="cheddar-console__cmd-hint">help</code> · <code class="cheddar-console__cmd-hint">skills</code> · <code class="cheddar-console__cmd-hint">projects</code> · <code class="cheddar-console__cmd-hint">call kairi</code></div>
         </section>
 
         <button id="cheddarConsoleToggle" aria-controls="cheddarConsole" aria-expanded="false"
@@ -275,6 +275,10 @@
 
         case 'print':
           this.printResume();
+          break;
+
+        case 'doom':
+          this.launchDoom();
           break;
 
         default:
@@ -719,16 +723,12 @@
      * Print Resume
      */
     printResume: function() {
-      this.println('🖨️ Preparing resume for printing...');
-      this.println('⏳ Loading all content...');
+      this.println('📄 Opening resume PDF...');
 
-      // Close console before printing
-      if (this.state.isOpen) {
-        this.toggle();
-      }
+      // Open the resume PDF from the contact section
+      window.open('view/files/OnlineResume.pdf', '_blank');
 
-      // Wait for all content to load before printing
-      this.waitForContentThenPrint();
+      this.println('✅ Resume opened in a new tab!');
     },
 
     /**
@@ -766,6 +766,325 @@
           }, 1000);
         }
       });
+    },
+
+    /**
+     * Launch DOOM game
+     */
+    launchDoom: async function() {
+      // Check if DOOM overlay already exists
+      if (document.getElementById('doom-overlay')) {
+        this.println('🎮 DOOM is already running! Close it first.');
+        return;
+      }
+
+      this.println('🔫 Loading DOOM...');
+      this.println('⏳ Initializing js-dos emulator...');
+
+      // Create DOOM overlay
+      const overlay = document.createElement('div');
+      overlay.id = 'doom-overlay';
+      overlay.innerHTML = `
+        <div class="doom-container">
+          <div class="doom-header">
+            <h2>🔫 DOOM</h2>
+            <button class="doom-close" onclick="CheddarConsole.closeDoom()">✕ Close</button>
+          </div>
+          <div class="doom-content">
+            <div id="doom-player"></div>
+            <div id="doom-loading" class="doom-loading">
+              <div class="doom-spinner"></div>
+              <p>Loading DOOM...</p>
+            </div>
+          </div>
+          <div class="doom-controls">
+            <p><strong>Controls:</strong> Arrow keys = move | Ctrl = shoot | Space = use | 1-7 = weapons | ESC = menu</p>
+            <p><em>Click inside the game to start playing.</em></p>
+          </div>
+        </div>
+      `;
+
+      document.body.appendChild(overlay);
+
+      // Close console to show game
+      if (this.state.isOpen) {
+        this.toggle();
+      }
+
+      // Add styles
+      this.injectDoomStyles();
+
+      // Load and initialize js-dos
+      try {
+        const playerDiv = document.getElementById('doom-player');
+        const loadingDiv = document.getElementById('doom-loading');
+
+        // Load js-dos library and CSS
+        if (!window.Dos) {
+          this.println('📦 Downloading js-dos library...');
+          await this.loadJsDosLibrary();
+          await this.loadJsDosCSS();
+        }
+
+        this.println('🎮 Starting DOOM emulator...');
+
+        // Initialize js-dos with emulators config
+        const dos = window.Dos(playerDiv, {
+          pathPrefix: "https://cdn.dos.zone/current/",
+        });
+
+        // Run DOOM bundle
+        await dos.run("https://cdn.dos.zone/original/2X/9/9ed7eb9c2c441f56656692ed4dc7ab28f58503ce.jsdos");
+
+        // Hide loading indicator
+        if (loadingDiv) {
+          loadingDiv.style.display = 'none';
+        }
+
+        this.println('✅ DOOM loaded! Have fun!');
+      } catch (err) {
+        this.println(`❌ Error loading DOOM: ${this.escapeHtml(String(err.message || err))}`);
+        console.error('DOOM error:', err);
+
+        // Show error in overlay
+        const loadingDiv = document.getElementById('doom-loading');
+        if (loadingDiv) {
+          loadingDiv.innerHTML = `
+            <p style="color: #ff4444;">Failed to load DOOM</p>
+            <p style="font-size: 12px;">${this.escapeHtml(String(err.message || err))}</p>
+            <button onclick="CheddarConsole.closeDoom()" style="margin-top: 15px; padding: 8px 16px; background: #22A39F; border: none; color: white; border-radius: 4px; cursor: pointer;">Close</button>
+          `;
+        }
+      }
+    },
+
+    /**
+     * Load js-dos library dynamically
+     */
+    loadJsDosLibrary: function() {
+      const self = this;
+      return new Promise((resolve, reject) => {
+        if (window.Dos || window.emulators) {
+          resolve();
+          return;
+        }
+
+        const script = document.createElement('script');
+        script.src = 'https://cdn.dos.zone/current/js-dos/js-dos.js';
+
+        script.onload = () => {
+          self.println('✅ js-dos library loaded');
+          resolve();
+        };
+
+        script.onerror = () => {
+          const error = new Error('Failed to load js-dos library');
+          self.println('❌ ' + error.message);
+          reject(error);
+        };
+
+        document.head.appendChild(script);
+      });
+    },
+
+    /**
+     * Load js-dos CSS
+     */
+    loadJsDosCSS: function() {
+      return new Promise((resolve) => {
+        // Check if already loaded
+        if (document.getElementById('jsdos-css')) {
+          resolve();
+          return;
+        }
+
+        const link = document.createElement('link');
+        link.id = 'jsdos-css';
+        link.rel = 'stylesheet';
+        link.href = 'https://cdn.dos.zone/current/js-dos/js-dos.css';
+        link.onload = () => resolve();
+        link.onerror = () => resolve(); // Continue even if CSS fails
+        document.head.appendChild(link);
+      });
+    },
+
+    /**
+     * Close DOOM overlay
+     */
+    closeDoom: function() {
+      const overlay = document.getElementById('doom-overlay');
+      if (overlay) {
+        overlay.remove();
+        this.println('👋 DOOM closed. Thanks for playing!');
+      }
+    },
+
+    /**
+     * Inject DOOM overlay styles
+     */
+    injectDoomStyles: function() {
+      // Check if styles already exist
+      if (document.getElementById('doom-styles')) return;
+
+      const style = document.createElement('style');
+      style.id = 'doom-styles';
+      style.textContent = `
+        #doom-overlay {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: rgba(0, 0, 0, 0.95);
+          z-index: 2147483646;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          animation: doomFadeIn 0.3s ease-out;
+        }
+
+        @keyframes doomFadeIn {
+          from {
+            opacity: 0;
+          }
+          to {
+            opacity: 1;
+          }
+        }
+
+        .doom-container {
+          width: 90%;
+          max-width: 1200px;
+          height: 90%;
+          max-height: 800px;
+          background: #1a1a1a;
+          border: 3px solid #22A39F;
+          border-radius: 8px;
+          display: flex;
+          flex-direction: column;
+          box-shadow: 0 0 40px rgba(34, 163, 159, 0.5);
+        }
+
+        .doom-header {
+          background: linear-gradient(135deg, #22A39F, #1a8a87);
+          padding: 15px 20px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          border-radius: 5px 5px 0 0;
+        }
+
+        .doom-header h2 {
+          margin: 0;
+          color: white;
+          font-family: monospace;
+          font-size: 24px;
+          text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .doom-close {
+          background: #ff4444;
+          border: none;
+          color: white;
+          padding: 8px 16px;
+          border-radius: 4px;
+          cursor: pointer;
+          font-weight: bold;
+          transition: all 0.2s;
+        }
+
+        .doom-close:hover {
+          background: #cc0000;
+          transform: scale(1.05);
+        }
+
+        .doom-content {
+          flex: 1;
+          background: #000;
+          position: relative;
+          overflow: hidden;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        #doom-player {
+          width: 100%;
+          height: 100%;
+          display: block;
+        }
+
+        #doom-player canvas {
+          width: 100% !important;
+          height: 100% !important;
+        }
+
+        .doom-loading {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          text-align: center;
+          color: #22A39F;
+          font-family: monospace;
+          z-index: 10;
+        }
+
+        .doom-loading p {
+          margin: 5px 0;
+          font-size: 16px;
+        }
+
+        .doom-spinner {
+          border: 4px solid #333;
+          border-top: 4px solid #22A39F;
+          border-radius: 50%;
+          width: 50px;
+          height: 50px;
+          animation: doomSpin 1s linear infinite;
+          margin: 0 auto 15px;
+        }
+
+        @keyframes doomSpin {
+          0% { transform: rotate(0deg); }
+          100% { transform: rotate(360deg); }
+        }
+
+        .doom-controls {
+          background: #2a2a2a;
+          padding: 12px 20px;
+          border-radius: 0 0 5px 5px;
+          color: #22A39F;
+          font-family: monospace;
+          font-size: 14px;
+        }
+
+        .doom-controls p {
+          margin: 5px 0;
+        }
+
+        .doom-controls strong {
+          color: #fff;
+        }
+
+        @media (max-width: 768px) {
+          .doom-container {
+            width: 95%;
+            height: 95%;
+          }
+
+          .doom-header h2 {
+            font-size: 18px;
+          }
+
+          .doom-controls {
+            font-size: 12px;
+            padding: 10px;
+          }
+        }
+      `;
+
+      document.head.appendChild(style);
     },
 
     /**
