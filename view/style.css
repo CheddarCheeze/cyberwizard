@@ -266,7 +266,15 @@ hr { margin: 40px 0px; border-color: #727878; opacity: 0.2; filter:alpha(opacity
 @supports (display: grid) {
 	.contact-cards-container {
 		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+		/* Force 2x2 grid on larger screens */
+		grid-template-columns: repeat(2, 1fr);
+	}
+
+	/* Adjust to single column on tablets and below */
+	@media (max-width: 991px) {
+		.contact-cards-container {
+			grid-template-columns: 1fr;
+		}
 	}
 }
 
