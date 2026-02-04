@@ -1,0 +1,248 @@
+/* Recruiter Form Modal Styling */
+
+.website-url {
+	position: absolute;
+	left: -9999px;
+	width: 1px;
+	height: 1px;
+	opacity: 0;
+	pointer-events: none;
+}
+
+/* Modal Content */
+#recruiterModal .modal-content {
+	background: linear-gradient(135deg, #434242 0%, #2a2a2a 100%);
+	border: 2px solid #22A39F;
+	border-radius: 12px;
+	color: #FFFFFF;
+}
+
+/* Modal Header */
+#recruiterModal .modal-header {
+	border-bottom: 2px solid rgba(34, 163, 159, 0.3);
+	padding: 20px 30px;
+}
+
+#recruiterModal .modal-title {
+	color: #22A39F;
+	font-weight: 600;
+	font-size: 24px;
+}
+
+#recruiterModal .btn-close-white {
+	filter: brightness(0) invert(1);
+	opacity: 0.8;
+}
+
+#recruiterModal .btn-close-white:hover {
+	opacity: 1;
+}
+
+/* Modal Body */
+#recruiterModal .modal-body {
+	padding: 30px;
+}
+
+#recruiterModal .form-intro {
+	color: rgba(255, 255, 255, 0.8);
+	margin-bottom: 25px;
+	font-size: 15px;
+	line-height: 1.6;
+}
+
+/* Form Labels */
+#recruiterModal .form-label {
+	color: #FFFFFF;
+	font-weight: 600;
+	margin-bottom: 8px;
+	font-size: 14px;
+}
+
+#recruiterModal .text-danger {
+	color: #ff6b6b;
+}
+
+/* Form Controls */
+#recruiterModal .form-control,
+#recruiterModal .form-select {
+	background-color: rgba(255, 255, 255, 0.1);
+	border: 2px solid rgba(255, 255, 255, 0.2);
+	color: #FFFFFF;
+	padding: 10px 15px;
+	border-radius: 6px;
+	transition: all 0.3s ease;
+	font-size: 14px;
+}
+
+#recruiterModal .form-control:focus,
+#recruiterModal .form-select:focus {
+	background-color: rgba(255, 255, 255, 0.15);
+	border-color: #22A39F;
+	box-shadow: 0 0 0 0.2rem rgba(34, 163, 159, 0.25);
+	color: #FFFFFF;
+	outline: none;
+}
+
+#recruiterModal .form-control::placeholder {
+	color: rgba(255, 255, 255, 0.4);
+}
+
+/* Select Dropdown Options */
+#recruiterModal .form-select option {
+	background-color: #434242;
+	color: #FFFFFF;
+}
+
+/* Textarea */
+#recruiterModal textarea.form-control {
+	resize: vertical;
+	min-height: 100px;
+}
+
+/* Helper Text */
+#recruiterModal .form-text {
+	color: rgba(255, 255, 255, 0.6);
+	font-size: 12px;
+	margin-top: 5px;
+}
+
+/* Character Counter */
+#charCount {
+	color: #22A39F;
+	font-weight: 600;
+}
+
+/* Form Status Messages */
+.form-status {
+	margin: 20px 0;
+	padding: 15px;
+	border-radius: 6px;
+	font-size: 14px;
+	display: none;
+}
+
+.form-status.success {
+	background-color: rgba(34, 163, 159, 0.2);
+	border: 2px solid #22A39F;
+	color: #22A39F;
+	display: block;
+}
+
+.form-status.error {
+	background-color: rgba(255, 107, 107, 0.2);
+	border: 2px solid #ff6b6b;
+	color: #ff6b6b;
+	display: block;
+}
+
+.form-status i {
+	margin-right: 8px;
+}
+
+/* Modal Footer */
+#recruiterModal .modal-footer {
+	border-top: 2px solid rgba(34, 163, 159, 0.3);
+	padding: 20px 30px;
+	margin-top: 10px;
+}
+
+/* Buttons */
+#recruiterModal .btn {
+	padding: 10px 24px;
+	border-radius: 6px;
+	font-weight: 600;
+	font-size: 14px;
+	transition: all 0.3s ease;
+}
+
+#recruiterModal .btn-primary {
+	background-color: #22A39F;
+	border: 2px solid #22A39F;
+	color: #FFFFFF;
+}
+
+#recruiterModal .btn-primary:hover:not(:disabled) {
+	background-color: #1c8784;
+	border-color: #1c8784;
+	transform: translateY(-2px);
+	box-shadow: 0 4px 12px rgba(34, 163, 159, 0.4);
+}
+
+#recruiterModal .btn-primary:disabled {
+	background-color: rgba(34, 163, 159, 0.5);
+	border-color: rgba(34, 163, 159, 0.5);
+	cursor: not-allowed;
+	opacity: 0.6;
+}
+
+#recruiterModal .btn-secondary {
+	background-color: transparent;
+	border: 2px solid rgba(255, 255, 255, 0.3);
+	color: #FFFFFF;
+}
+
+#recruiterModal .btn-secondary:hover {
+	background-color: rgba(255, 255, 255, 0.1);
+	border-color: rgba(255, 255, 255, 0.5);
+}
+
+/* Loading State */
+#recruiterModal .btn-primary.loading::after {
+	content: "";
+	display: inline-block;
+	width: 14px;
+	height: 14px;
+	margin-left: 8px;
+	border: 2px solid #FFFFFF;
+	border-radius: 50%;
+	border-top-color: transparent;
+	animation: spinner 0.6s linear infinite;
+}
+
+@keyframes spinner {
+	to { transform: rotate(360deg); }
+}
+
+/* Validation Styles */
+#recruiterModal .form-control.is-invalid,
+#recruiterModal .form-select.is-invalid {
+	border-color: #ff6b6b;
+}
+
+#recruiterModal .form-control.is-valid,
+#recruiterModal .form-select.is-valid {
+	border-color: #22A39F;
+}
+
+/* Responsive Design */
+@media (max-width: 767px) {
+	#recruiterModal .modal-dialog {
+		margin: 10px;
+	}
+
+	#recruiterModal .modal-body {
+		padding: 20px;
+	}
+
+	#recruiterModal .modal-header,
+	#recruiterModal .modal-footer {
+		padding: 15px 20px;
+	}
+
+	#recruiterModal .modal-title {
+		font-size: 20px;
+	}
+
+	#recruiterModal .btn {
+		width: 100%;
+		margin-bottom: 10px;
+	}
+
+	#recruiterModal .btn:last-child {
+		margin-bottom: 0;
+	}
+
+	#recruiterModal .modal-footer {
+		flex-direction: column-reverse;
+	}
+}

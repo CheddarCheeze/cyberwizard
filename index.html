@@ -40,6 +40,7 @@
 
 		<!-- Profile Interactive Features CSS -->
 		<link href="view/css/profile.css" rel="stylesheet" />
+		<link href="view/css/professional-inquiry-form.css" rel="stylesheet" />
 
 		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!--[if lt IE 9]>
@@ -122,7 +123,7 @@
 
 	<body data-spy="scroll" data-target="#navbar-example">	 
 		
-		<div class="csce"><a href="http://sdc.csce.uark.edu" target="_blank">Updated as of October 22, 2025</a></div>
+		<div class="csce">Updated as of January 23, 2026</div>
 		
 			
 		<div id="top" class="jumbotron" data-src="view/images/boxes_animation.gif" data-position="center center">
@@ -948,11 +949,133 @@
 			</div>
 		</a>
 	</div>
+
+	<div class="contact-card" data-contact="recruiter">
+		<a href="#" data-bs-toggle="modal" data-bs-target="#recruiterModal">
+			<div class="contact-card-inner">
+				<div class="contact-icon">
+					<i class="bi bi-briefcase-fill"></i>
+				</div>
+				<h4>Professional Inquiries</h4>
+				<p class="contact-description">Contact me about collaboration and opportunities</p>
+				<span class="contact-cta">
+					<span class="cta-text">Open Form</span>
+					<i class="bi bi-arrow-right-circle"></i>
+				</span>
+			</div>
+		</a>
+	</div>
 </div>
 
 <hr />
 
-		
+<!-- Recruiter Contact Form Modal -->
+<div class="modal fade" id="recruiterModal" tabindex="-1" aria-labelledby="recruiterModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title" id="recruiterModalLabel">
+					<i class="bi bi-briefcase-fill me-2"></i>Professional Inquiry Form
+				</h4>
+				<button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body">
+				<p class="form-intro">Thank you for your interest. Please fill out the form below with details about the opportunity.</p>
+
+				<form id="recruiterForm" action="https://formspree.io/f/mgoovalq" method="POST">
+					<input type="text" name="_honeypot" class="website-url" tabindex="-1" autocomplete="off">
+
+					<div class="row">
+						<div class="col-md-6 mb-3">
+							<label for="recruiterName" class="form-label">Your Name <span class="text-danger">*</span></label>
+							<input type="text" class="form-control" id="recruiterName" name="name" required>
+						</div>
+						<div class="col-md-6 mb-3">
+							<label for="recruiterEmail" class="form-label">Email Address <span class="text-danger">*</span></label>
+							<input type="email" class="form-control" id="recruiterEmail" name="email" required>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-md-6 mb-3">
+							<label for="recruiterCompany" class="form-label">Company Name <span class="text-danger">*</span></label>
+							<input type="text" class="form-control" id="recruiterCompany" name="company" required>
+						</div>
+						<div class="col-md-6 mb-3">
+							<label for="recruiterRole" class="form-label">Role Type <span class="text-danger">*</span></label>
+							<select class="form-select" id="recruiterRole" name="role_type" required>
+								<option value="">Select role type...</option>
+								<option value="Full-Time Engineering">Full-Time Engineering</option>
+								<option value="Full-Time Leadership">Full-Time Leadership</option>
+								<option value="Contract/Consulting">Contract/Consulting</option>
+								<option value="Advisory">Advisory</option>
+								<option value="Other">Other</option>
+							</select>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-md-6 mb-3">
+							<label for="recruiterLocation" class="form-label">Work Location <span class="text-danger">*</span></label>
+							<select class="form-select" id="recruiterLocation" name="location" required>
+								<option value="">Select location type...</option>
+								<option value="Remote">Remote</option>
+								<option value="Hybrid">Hybrid</option>
+								<option value="Onsite">Onsite</option>
+							</select>
+						</div>
+						<div class="col-md-6 mb-3">
+							<label for="recruiterCompensation" class="form-label">Compensation Range <span class="text-danger">*</span></label>
+							<input type="text" class="form-control" id="recruiterCompensation" name="compensation" placeholder="e.g., $120k-$150k" required>
+							<small class="form-text text-muted">Please provide a specific range</small>
+						</div>
+					</div>
+
+					<div class="mb-3">
+						<label for="recruiterDescription" class="form-label">Opportunity Description <span class="text-danger">*</span></label>
+						<textarea class="form-control" id="recruiterDescription" name="description" rows="4" maxlength="500" required placeholder="Brief description of the role and why you're reaching out..."></textarea>
+						<small class="form-text text-muted"><span id="charCount">0</span>/500 characters</small>
+					</div>
+
+					<div class="mb-3">
+						<label for="recruiterSource" class="form-label">How did you find me?</label>
+						<select class="form-select" id="recruiterSource" name="source">
+							<option value="">Select source...</option>
+							<option value="Google">Google</option>
+							<option value="LinkedIn">LinkedIn</option>
+							<option value="Indeed">Indeed</option>
+							<option value="GitHub">GitHub</option>
+							<option value="Personal Website">Personal Website</option>
+							<option value="Referral">Referral</option>
+							<option value="Other">Other</option>
+						</select>
+					</div>
+
+					<div class="mb-3" id="referralSourceContainer" style="display: none;">
+						<label for="referralSource" class="form-label">Who referred you?</label>
+						<input type="text" class="form-control" id="referralSource" name="referral_name" placeholder="Name or company">
+					</div>
+
+					<div class="mb-3" id="otherSourceContainer" style="display: none;">
+						<label for="otherSource" class="form-label">Please specify</label>
+						<input type="text" class="form-control" id="otherSource" name="source_other" placeholder="Where did you find me?">
+					</div>
+
+					<div class="form-status" id="formStatus"></div>
+
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+						<button type="submit" class="btn btn-primary" id="submitBtn">
+							<i class="bi bi-send-fill me-2"></i>Submit
+						</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+
+
 		<div class="modal fade" id="upgrade-dialog" tabindex="-1" role="dialog" aria-hidden="true">
 	<div class="modal-dialog">
 		<div class="modal-content">
@@ -988,6 +1111,7 @@
 
 		<!-- Profile Interactive Features -->
 		<script src="view/js/profile.js"></script>
+		<script src="view/js/professional-inquiry-form.js"></script>
 
 		<script>
 		// Initialize visual effects
